@@ -1,0 +1,9 @@
+This is a placeholder file. 
+
+Please replace the following images in this directory:
+- profile.jpg (your profile picture, preferably square)
+- cleancity.jpg (image for your CleanCity project)
+- project2.jpg (image for your second project)
+- project3.jpg (image for your third project)
+
+You can delete this file after adding your images.
