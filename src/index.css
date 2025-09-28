@@ -203,40 +203,33 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.2rem;
+    font-size: 2rem; /* Increased size for better visibility */
     transition: all 0.3s ease;
-    border: 1px solid transparent;
+    color: var(--text-muted); /* Default color */
 }
 
 .social-icon:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    color: white; /* Keep icon color white on hover */
+    transform: translateY(-3px) scale(1.1);
 }
 
-/* Social Icon Brand Colors */
-.social-icon.github-icon {
-    background-color: #333;
-    border-color: #333;
+/* Social Icon Brand Colors on Hover */
+.social-icon.github-icon:hover {
+    color: #333;
+}
+body.dark-mode .social-icon.github-icon:hover {
+    color: #fff;
 }
 
-.social-icon.linkedin-icon {
-    background-color: #0077B5;
-    border-color: #0077B5;
+.social-icon.linkedin-icon:hover {
+    color: #0077B5;
 }
 
-.social-icon.instagram-icon {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    border-color: transparent;
+.social-icon.instagram-icon:hover {
+    color: #d6249f;
 }
 
-.social-icon.gmail-icon {
-    background-color: #D44638;
-    border-color: #D44638;
+.social-icon.gmail-icon:hover {
+    color: #D44638;
 }
 
 /* Header Styles */
@@ -917,6 +910,7 @@ body.dark-mode .django-icon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     opacity: 0;
     transition: opacity var(--transition-speed) ease;
     padding: var(--spacing-5);
