@@ -5,7 +5,7 @@ const About = () => {
     <section id="about" className="about">
       <div className="container">
         <h2 className="section-title">About Me</h2>
-        <div className="about-content">
+        <div className="about-content glass-card">
           <div className="about-text">
             <p>
               I'm a developer driven by a passion for building elegant and effective digital solutions. My journey into technology began with a fascination for Python, which quickly expanded into the dynamic world of full-stack web development. I thrive on the challenge of turning complex problems into clean, user-friendly applications that make a real difference.
