@@ -235,6 +235,33 @@ section {
     align-items: center;
 }
 
+.logo-text {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    letter-spacing: -0.2em; /* Overlap the letters to create the W effect */
+    transition: letter-spacing 0.3s ease;
+}
+
+.logo a:hover .logo-text {
+    letter-spacing: -0.1em; /* Slightly separate on hover */
+}
+
+.logo-v {
+    transition: color 0.3s ease;
+}
+
+.logo a:hover .v-one {
+    color: var(--primary-color);
+}
+
+.logo a:hover .v-two,
+.logo a:hover .v-three {
+    color: var(--text-muted);
+}
+
 .logo-dot {
     width: 8px;
     height: 8px;

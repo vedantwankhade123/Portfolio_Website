@@ -63,7 +63,11 @@ const Header = ({ onResumeClick }) => {
       <div className="container header-container">
         <div className="logo">
           <a href="#home" onClick={closeMenu}>
-            <span className="logo-text">Portfolio</span>
+            <div className="logo-text">
+              <span className="logo-v v-one">V</span>
+              <span className="logo-v v-two">V</span>
+              <span className="logo-v v-three">V</span>
+            </div>
             <span className="logo-dot"></span>
           </a>
         </div>
