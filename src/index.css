@@ -1583,12 +1583,10 @@ body.dark-mode .footer-links a:hover {
     padding: var(--spacing-5);
     margin: 15px;
     border-radius: 16px;
-    transition: background-color var(--transition-speed) ease;
 }
 .all-content-sidebar h2 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-6);
-    transition: color var(--transition-speed) ease;
 }
 .all-content-sidebar ul {
     list-style: none;
@@ -1619,21 +1617,6 @@ body.dark-mode .footer-links a:hover {
     color: white;
     font-weight: 500;
 }
-
-body.dark-mode .all-content-sidebar {
-    background: #ffffff;
-}
-body.dark-mode .all-content-sidebar h2 {
-    color: #212529;
-}
-body.dark-mode .sidebar-btn {
-    color: #64748b;
-}
-body.dark-mode .sidebar-btn:hover {
-    background: #e2e8f0;
-    color: #212529;
-}
-
 .all-content-main {
     flex: 1;
     overflow-y: auto;
