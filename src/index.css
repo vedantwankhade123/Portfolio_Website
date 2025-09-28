@@ -203,32 +203,36 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem; /* Increased size for better visibility */
+    font-size: 2rem;
     transition: all 0.3s ease;
-    color: var(--text-muted); /* Default color */
 }
 
 .social-icon:hover {
     transform: translateY(-3px) scale(1.1);
 }
 
-/* Social Icon Brand Colors on Hover */
-.social-icon.github-icon:hover {
+/* Social Icon Brand Colors */
+.social-icon.github-icon {
     color: #333;
 }
-body.dark-mode .social-icon.github-icon:hover {
+body.dark-mode .social-icon.github-icon {
     color: #fff;
 }
 
-.social-icon.linkedin-icon:hover {
+.social-icon.linkedin-icon {
     color: #0077B5;
 }
 
-.social-icon.instagram-icon:hover {
-    color: #d6249f;
+.social-icon.instagram-icon {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    color: #d6249f; /* Fallback */
 }
 
-.social-icon.gmail-icon:hover {
+.social-icon.gmail-icon {
     color: #D44638;
 }
 
@@ -269,10 +273,8 @@ body.dark-mode .social-icon.github-icon:hover {
 .logo a {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--text-color);
     display: flex;
     align-items: center;
-    transition: color var(--transition-speed) ease;
 }
 
 .logo-text {
@@ -280,26 +282,27 @@ body.dark-mode .social-icon.github-icon:hover {
     align-items: center;
     font-weight: 700;
     font-size: 1.8rem;
+    letter-spacing: -0.2em;
+    transition: letter-spacing 0.3s ease;
+    background: linear-gradient(45deg, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+body.dark-mode .logo-text {
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    text-fill-color: initial;
     color: var(--text-color);
-    letter-spacing: -0.2em; /* Overlap the letters to create the W effect */
     transition: letter-spacing 0.3s ease, color var(--transition-speed) ease;
 }
 
 .logo a:hover .logo-text {
     letter-spacing: -0.1em; /* Slightly separate on hover */
-}
-
-.logo-v {
-    transition: color 0.3s ease;
-}
-
-.logo a:hover .v-one {
-    color: var(--primary-color);
-}
-
-.logo a:hover .v-two,
-.logo a:hover .v-three {
-    color: var(--text-muted);
 }
 
 .header-actions {
