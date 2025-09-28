@@ -7,7 +7,7 @@ body.no-scroll {
 body.dark-mode {
     --background-color: #121212; /* A true dark background */
     --card-bg: rgba(28, 28, 28, 0.75); /* Semi-transparent dark gray card */
-    --text-color: #e2e8f0; /* A light, soft gray for text */
+    --text-color: #ffffff; /* A light, soft gray for text */
     --secondary-color: #a0a0a0; /* A neutral gray for secondary text */
     --border-color: rgba(51, 51, 51, 0.5);
     --shadow-color: rgba(0, 0, 0, 0.3);
@@ -329,6 +329,10 @@ body.dark-mode .logo-text {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+body.dark-mode .nav-links a {
+    color: var(--text-color);
 }
 
 .nav-links a:not(.active):hover {
