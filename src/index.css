@@ -728,10 +728,11 @@ body.dark-mode .django-icon {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     opacity: 0;
     transition: opacity var(--transition-speed) ease;
+    padding: var(--spacing-6);
 }
 
 .current-project .project-carousel-card:hover .project-overlay {
