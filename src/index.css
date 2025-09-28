@@ -698,71 +698,94 @@ body.dark-mode .django-icon {
 .project-links { display: flex; gap: 15px; margin-top: auto; }
 
 /* Certifications Section */
-.certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+.certifications-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: var(--spacing-6);
+    position: relative;
+}
+
+.carousel-arrow {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background: var(--primary-gradient);
+    color: white;
+    transform: scale(1.1);
 }
 
 .certification-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 24px !important;
-    overflow: hidden;
-    padding: 0;
-}
-
-.certification-thumbnail {
-    cursor: pointer;
     position: relative;
-    height: 200px;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9.5;
+    border-radius: 24px;
     overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.certification-thumbnail img {
+.certification-card:hover {
+    transform: scale(1.03);
+}
+
+.certification-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
-.certification-card:hover .certification-thumbnail img {
-    transform: scale(1.05);
-}
-
-.thumbnail-overlay {
+.certification-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease-in-out;
+    display: flex;
+    align-items: flex-end;
 }
 
-.certification-card:hover .thumbnail-overlay {
+.certification-card:hover .certification-overlay {
     opacity: 1;
 }
 
-.thumbnail-overlay i {
-    font-size: 3rem;
+.certification-content {
+    padding: var(--spacing-6);
+    width: 100%;
     color: white;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition-delay: 0.1s;
 }
 
-.certification-content {
-    padding: var(--spacing-5);
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+.certification-card:hover .certification-content {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .certification-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 10px;
+    color: white;
 }
 
 .certification-meta {
@@ -770,8 +793,8 @@ body.dark-mode .django-icon {
     flex-direction: column;
     gap: 8px;
     margin-bottom: var(--spacing-5);
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: #e2e8f0;
+    font-size: 1rem;
 }
 
 .certification-meta span {
@@ -781,9 +804,11 @@ body.dark-mode .django-icon {
 }
 
 .certification-content .btn {
-    margin-top: auto;
-    width: 100%;
+    margin-top: 0;
+    width: auto;
+    align-self: flex-start;
 }
+
 
 /* Certificate Popup */
 .certificate-popup {
@@ -1141,6 +1166,17 @@ footer {
     .timeline-icon { position: static; margin-bottom: var(--spacing-4); }
     .timeline-content { text-align: center; }
     .footer-content { flex-direction: column; gap: var(--spacing-4); }
+    
+    .certifications-carousel {
+        flex-direction: column;
+    }
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .prev-arrow { left: -10px; }
+    .next-arrow { right: -10px; }
 }
 
 @media (max-width: 480px) {
