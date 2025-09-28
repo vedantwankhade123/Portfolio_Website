@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import CertificatePopup from './CertificatePopup';
+import ProjectDetailPopup from './ProjectDetailPopup';
 
 const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab }) => {
     const [activeTab, setActiveTab] = useState(initialTab);
     const [popupCert, setPopupCert] = useState({ src: null, title: null });
+    const [selectedProject, setSelectedProject] = useState(null);
 
     useEffect(() => {
         if (isOpen) {
@@ -19,6 +21,14 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
 
     const closeCertPopup = () => {
         setPopupCert({ src: null, title: null });
+    };
+
+    const handleViewProject = (project) => {
+        setSelectedProject(project);
+    };
+
+    const closeProjectPopup = () => {
+        setSelectedProject(null);
     };
 
     return (
@@ -50,7 +60,7 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
                     {activeTab === 'projects' && (
                         <div className="content-grid projects-grid">
                             {projects.map((project, index) => (
-                                <div className="popup-project-card" key={index}>
+                                <div className="popup-project-card" key={index} onClick={() => handleViewProject(project)}>
                                     <div className="popup-project-video">
                                         <video autoPlay loop muted playsInline>
                                             <source src={project.videoSrc} type="video/mp4" />
@@ -86,6 +96,10 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
                 src={popupCert.src} 
                 title={popupCert.title} 
                 onClose={closeCertPopup} 
+            />
+            <ProjectDetailPopup 
+                project={selectedProject}
+                onClose={closeProjectPopup}
             />
         </div>
     );
