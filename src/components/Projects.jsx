@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const ProjectDetailPopup = ({ project, onClose }) => {
   if (!project) return null;
@@ -28,10 +28,10 @@ const ProjectDetailPopup = ({ project, onClose }) => {
   );
 };
 
-const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
+const ProjectCarouselCard = ({ project, isCurrent, onViewClick, videoRef }) => {
   return (
     <div className="project-carousel-card">
-      <video autoPlay loop muted playsInline key={project.videoSrc}>
+      <video ref={videoRef} loop muted playsInline key={project.videoSrc}>
         <source src={project.videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -49,6 +49,7 @@ const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const videoRefs = useRef([]);
 
   const projectsData = [
     {
@@ -70,6 +71,18 @@ const Projects = () => {
       tech: ["React", "Node.js", "Express", "MongoDB"]
     }
   ];
+
+  useEffect(() => {
+    videoRefs.current.forEach((videoEl, index) => {
+      if (videoEl) {
+        if (index === currentIndex) {
+          videoEl.play();
+        } else {
+          videoEl.pause();
+        }
+      }
+    });
+  }, [currentIndex, projectsData]);
 
   const handleViewClick = (project) => {
     setSelectedProject(project);
@@ -101,6 +114,7 @@ const Projects = () => {
               return (
                 <div className={className} key={index}>
                   <ProjectCarouselCard 
+                    videoRef={el => videoRefs.current[index] = el}
                     project={project} 
                     isCurrent={index === currentIndex}
                     onViewClick={handleViewClick} 
