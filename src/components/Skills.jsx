@@ -1,15 +1,12 @@
 import React from 'react';
 
-const frontendSkills = [
+const allSkills = [
   { name: 'HTML5', icon: 'fab fa-html5', colorClass: 'html-icon' },
   { name: 'CSS3', icon: 'fab fa-css3-alt', colorClass: 'css-icon' },
   { name: 'JavaScript', icon: 'fab fa-js', colorClass: 'js-icon' },
   { name: 'React', icon: 'fab fa-react', colorClass: 'react-icon' },
   { name: 'Bootstrap', icon: 'fab fa-bootstrap', colorClass: 'bootstrap-icon' },
   { name: 'jQuery', icon: 'fas fa-code', colorClass: 'jquery-icon' },
-];
-
-const backendAndDatabasesSkills = [
   { name: 'Python', icon: 'fab fa-python', colorClass: 'python-icon' },
   { name: 'Node.js', icon: 'fab fa-node-js', colorClass: 'node-icon' },
   { name: 'Django', icon: 'fas fa-server', colorClass: 'django-icon' },
@@ -33,17 +30,8 @@ const Skills = () => {
       <div className="container">
         <h2 className="section-title">My Skills</h2>
         <div className="skills-content">
-          <div className="skill-category">
-            <h3>Frontend Development</h3>
-            <div className="skills-grid">
-              {frontendSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
-            </div>
-          </div>
-          <div className="skill-category">
-            <h3>Backend & Databases</h3>
-            <div className="skills-grid">
-              {backendAndDatabasesSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
-            </div>
+          <div className="skills-grid">
+            {allSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
           </div>
         </div>
       </div>
