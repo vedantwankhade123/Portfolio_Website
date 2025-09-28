@@ -25,8 +25,8 @@ const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
             <span><i className="fas fa-award"></i> {issuer}</span>
             <span><i className="far fa-calendar-alt"></i> {date}</span>
           </div>
-          <button onClick={() => onImageClick(imageUrl, title)} className="btn secondary-btn">
-            View Certificate
+          <button onClick={() => onImageClick(imageUrl, title)} className="btn primary-btn">
+            View Certificate <i className="fas fa-arrow-right"></i>
           </button>
         </div>
       </div>

@@ -738,6 +738,7 @@ body.dark-mode .django-icon {
     box-shadow: 0 10px 30px var(--shadow-color);
     transition: transform 0.3s ease;
     cursor: pointer;
+    background-color: #1a202c;
 }
 
 .certification-card:hover {
@@ -747,7 +748,9 @@ body.dark-mode .django-icon {
 .certification-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .certification-overlay {
@@ -807,6 +810,15 @@ body.dark-mode .django-icon {
     margin-top: 0;
     width: auto;
     align-self: flex-start;
+}
+
+.certification-content .btn i {
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+
+.certification-content .btn:hover i {
+    transform: translateX(3px);
 }
 
 
