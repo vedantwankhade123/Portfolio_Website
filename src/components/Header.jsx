@@ -4,10 +4,12 @@ import ThemeToggle from './ThemeToggle';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
   const sectionsRef = useRef({});
 
   useEffect(() => {
     const handleScroll = () => {
+      // Active section logic
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       let currentSection = 'home';
       Object.entries(sectionsRef.current).forEach(([id, element]) => {
@@ -16,6 +18,13 @@ const Header = () => {
         }
       });
       setActiveSection(currentSection);
+
+      // Scrolled header logic
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
 
     const sectionElements = document.querySelectorAll('section[id]');
@@ -24,7 +33,7 @@ const Header = () => {
     });
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    handleScroll(); // Run on mount to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -50,7 +59,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`top-bar ${isMenuOpen ? 'menu-open' : ''}`}>
+    <header className={`top-bar ${isMenuOpen ? 'menu-open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         <div className="logo">
           <a href="#home" onClick={closeMenu}>
