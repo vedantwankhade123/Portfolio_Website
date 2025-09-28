@@ -370,7 +370,7 @@ body.dark-mode .nav-links a.active {
 }
 
 .hero-text {
-    text-align: left;
+    text-align: center;
 }
 
 .animate-text {
@@ -411,7 +411,7 @@ body.dark-mode .nav-links a.active {
     display: flex;
     gap: var(--spacing-5);
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: var(--spacing-6);
 }
 
@@ -442,7 +442,7 @@ body.dark-mode .nav-links a.active {
     margin-top: var(--spacing-8);
     display: flex;
     gap: 20px;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 /* About Section */
