@@ -18,10 +18,6 @@ const backendAndDatabasesSkills = [
   { name: 'Supabase', icon: 'fas fa-bolt', colorClass: 'supabase-icon' },
 ];
 
-const toolsSkills = [
-  { name: 'GitHub', icon: 'fab fa-github', colorClass: 'github-icon' },
-];
-
 const SkillCard = ({ name, icon, colorClass }) => (
   <div className="skill-item">
     <div className={`skill-icon ${colorClass}`}>
@@ -47,12 +43,6 @@ const Skills = () => {
             <h3>Backend & Databases</h3>
             <div className="skills-grid">
               {backendAndDatabasesSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
-            </div>
-          </div>
-          <div className="skill-category">
-            <h3>Tools</h3>
-            <div className="skills-grid">
-              {toolsSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
             </div>
           </div>
         </div>

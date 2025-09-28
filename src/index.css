@@ -537,8 +537,9 @@ body.dark-mode .nav-links a.active {
 }
 
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: var(--spacing-6);
 }
 
@@ -576,14 +577,10 @@ body.dark-mode .nav-links a.active {
 .node-icon { color: #339933; }
 .django-icon { color: #092E20; }
 .supabase-icon { color: #3ECF8E; }
-.github-icon { color: #181717; }
 
 
 body.dark-mode .django-icon {
     color: #44B78B; /* Lighter green for dark mode */
-}
-body.dark-mode .github-icon {
-    color: #FFFFFF;
 }
 
 
