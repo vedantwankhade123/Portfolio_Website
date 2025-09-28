@@ -41,12 +41,12 @@ const Header = () => {
   };
 
   const navLinks = [
-    { id: 'home', text: 'Home' },
-    { id: 'about', text: 'About' },
-    { id: 'education', text: 'Education' },
-    { id: 'skills', text: 'Skills' },
-    { id: 'projects', text: 'Projects' },
-    { id: 'contact', text: 'Contact' },
+    { id: 'home', icon: 'fas fa-home', text: 'Home' },
+    { id: 'about', icon: 'fas fa-user', text: 'About' },
+    { id: 'education', icon: 'fas fa-graduation-cap', text: 'Education' },
+    { id: 'skills', icon: 'fas fa-code', text: 'Skills' },
+    { id: 'projects', icon: 'fas fa-briefcase', text: 'Projects' },
+    { id: 'contact', icon: 'fas fa-envelope', text: 'Contact' },
   ];
 
   return (
@@ -83,7 +83,8 @@ const Header = () => {
                 className={activeSection === link.id ? 'active' : ''} 
                 onClick={closeMenu}
               >
-                {link.text}
+                <i className={link.icon}></i>
+                <span className="link-text">{link.text}</span>
               </a>
             </li>
           ))}

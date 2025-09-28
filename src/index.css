@@ -182,42 +182,52 @@ section {
     transform: translateX(-50%);
     z-index: 1000;
     transition: all 0.4s ease;
+    padding: 10px; /* Increased padding for height */
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 0 15px;
+    gap: 10px;
+    padding: 0;
 }
 
 .nav-links a {
-    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
     font-weight: 500;
     position: relative;
-    padding: 15px;
+    padding: 12px 20px; /* Increased padding for pill shape */
+    border-radius: 40px; /* Pill shape */
+    transition: all var(--transition-speed) ease;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transition: width var(--transition-speed) var(--transition-timing);
+.nav-links a i {
+    font-size: 1.1rem;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 50%;
-}
-
-.nav-links a.active,
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--text-color);
+    background-color: var(--hover-color);
+}
+
+.nav-links a.active {
+    color: white;
+    background-color: var(--primary-color);
 }
 
 .burger { display: none; }
@@ -629,6 +639,7 @@ footer {
         border-radius: 0;
         transform: none;
         box-shadow: -10px 0 30px var(--shadow-color);
+        animation: none;
     }
     .nav-links {
         flex-direction: column;
@@ -703,4 +714,10 @@ footer {
 @media (max-width: 480px) {
     .cta-buttons { flex-direction: column; }
     .btn { width: 100%; }
+    .nav-links a .link-text {
+        display: none; /* Hide text on very small screens */
+    }
+    .nav-links a {
+        padding: 12px;
+    }
 }
