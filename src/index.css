@@ -925,6 +925,10 @@ footer {
 .primary-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.25);
+    color: white;
+}
+.primary-btn:active {
+    color: white;
 }
 .secondary-btn { 
     background-color: transparent; 
