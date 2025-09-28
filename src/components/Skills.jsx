@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../integrations/supabase/client.js';
-import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const SkillCard = ({ name, icon, colorClass }) => (
   <div className="skill-item">
@@ -13,7 +12,6 @@ const SkillCard = ({ name, icon, colorClass }) => (
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
-  const sectionRef = useScrollAnimation();
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -29,7 +27,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="skills scroll-animate" ref={sectionRef}>
+    <section id="skills" className="skills">
       <div className="container">
         <h2 className="section-title">My Skills</h2>
         <div className="skills-content">
