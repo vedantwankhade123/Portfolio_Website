@@ -956,11 +956,11 @@ body.dark-mode .django-icon {
 }
 
 .prev-arrow {
-    left: -80px;
+    left: -100px;
 }
 
 .next-arrow {
-    right: -80px;
+    right: -100px;
 }
 
 .carousel-arrow:hover {
@@ -1526,10 +1526,10 @@ body.dark-mode .project-popup .close-popup {
     }
 
     .prev-arrow {
-        left: -40px;
+        left: -60px;
     }
     .next-arrow {
-        right: -40px;
+        right: -60px;
     }
 
     .all-content-popup-content {
