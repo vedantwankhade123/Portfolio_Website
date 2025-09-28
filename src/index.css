@@ -242,7 +242,7 @@ section {
     font-size: 1.8rem;
     color: var(--text-color);
     letter-spacing: -0.2em; /* Overlap the letters to create the W effect */
-    transition: letter-spacing 0.3s ease;
+    transition: letter-spacing: 0.3s ease;
 }
 
 .logo a:hover .logo-text {
@@ -522,50 +522,44 @@ body.dark-mode .hero h1 .highlight {
 .star {
     position: absolute;
     top: -50px;
-    width: 2px;
-    height: 150px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
     border-radius: 50%;
     animation-name: shooting-star;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in;
     animation-iteration-count: infinite;
 }
 
 @keyframes shooting-star {
     from {
-        transform: translateY(0) translateX(0) rotate(20deg);
+        transform: translateY(0) translateX(0) rotate(30deg);
         opacity: 1;
     }
     to {
-        transform: translateY(120vh) translateX(-80vw) rotate(20deg);
+        transform: translateY(120vh) translateX(-100vw) rotate(30deg);
         opacity: 0;
     }
 }
 
 .star:nth-child(1) {
-    left: 20%;
+    left: 30%;
     animation-duration: 5s;
     animation-delay: 0s;
+    width: 2px;
+    height: 120px;
 }
 .star:nth-child(2) {
-    left: 80%;
+    left: 70%;
     animation-duration: 4s;
-    animation-delay: 1s;
+    animation-delay: 1.5s;
+    width: 1px;
+    height: 80px;
 }
 .star:nth-child(3) {
-    left: 50%;
-    animation-duration: 6s;
-    animation-delay: 3s;
-}
-.star:nth-child(4) {
     left: 90%;
-    animation-duration: 3.5s;
+    animation-duration: 6s;
     animation-delay: 4s;
-}
-.star:nth-child(5) {
-    left: 10%;
-    animation-duration: 5.5s;
-    animation-delay: 5.5s;
+    width: 2px;
+    height: 120px;
 }
 
 /* About Section */

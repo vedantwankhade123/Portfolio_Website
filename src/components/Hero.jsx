@@ -40,8 +40,6 @@ const Hero = () => {
           <div className="star"></div>
           <div className="star"></div>
           <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
         </div>
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
