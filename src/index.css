@@ -28,9 +28,9 @@ body.dark-mode {
     --spacing-12: 6rem;
     
     /* Colors */
-    --primary-color: #4a6cf7;
-    --primary-dark: #3b56c5;
-    --primary-rgb: 74, 108, 247;
+    --primary-color: #64748b;
+    --primary-dark: #475569;
+    --primary-rgb: 100, 116, 139;
     --secondary-color: #a8b2d1;
     --background-color: #f1f5f9;
     --card-bg: rgba(255, 255, 255, 0.6);
@@ -39,7 +39,7 @@ body.dark-mode {
     --border-color: #e2e8f0;
     --shadow-color: rgba(15, 23, 42, 0.08);
     --hover-color: #e2e8f0;
-    --primary-gradient: linear-gradient(45deg, #4a6cf7, #8a9efc);
+    --primary-gradient: linear-gradient(45deg, #2d3748, #1a202c);
     
     /* Transitions */
     --transition-speed: 0.3s;
