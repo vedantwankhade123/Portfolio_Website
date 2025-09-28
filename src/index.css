@@ -446,7 +446,7 @@ body.dark-mode .nav-links a.active {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: var(--spacing-8);
-    align-items: start;
+    align-items: center;
 }
 
 .about-text h3 {
