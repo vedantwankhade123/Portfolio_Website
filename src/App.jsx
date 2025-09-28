@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,8 +8,12 @@ import Certifications from './components/Certifications';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AllContentPopup from './components/AllContentPopup';
+import { projectsData, certificationsData } from './data';
 
 function App() {
+  const [isAllContentPopupOpen, setAllContentPopupOpen] = useState(false);
+
   return (
     <>
       <Header />
@@ -19,10 +23,16 @@ function App() {
         <Education />
         <Skills />
         <Certifications />
-        <Projects />
+        <Projects onViewAllClick={() => setAllContentPopupOpen(true)} />
         <Contact />
       </main>
       <Footer />
+      <AllContentPopup 
+        isOpen={isAllContentPopupOpen}
+        onClose={() => setAllContentPopupOpen(false)}
+        projects={projectsData}
+        certifications={certificationsData}
+      />
     </>
   );
 }

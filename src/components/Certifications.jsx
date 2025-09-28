@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
-
-const CertificatePopup = ({ src, title, onClose }) => {
-  if (!src) return null;
-
-  return (
-    <div className="certificate-popup active" onClick={onClose}>
-      <div className="certificate-popup-content" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="close-popup">&times;</button>
-        <img src={src} alt={title} />
-        <h3>{title}</h3>
-      </div>
-    </div>
-  );
-};
+import { certificationsData } from '../data';
+import CertificatePopup from './CertificatePopup';
 
 const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
   return (
@@ -37,27 +25,6 @@ const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
 const Certifications = () => {
   const [popupCert, setPopupCert] = useState({ src: null, title: null });
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const certificationsData = [
-    {
-      title: "Beginner to Master Python Programming",
-      issuer: "Udemy",
-      date: "April 2025",
-      imageUrl: "/images/Udemy.png",
-    },
-    {
-      title: "Full Stack Web Development",
-      issuer: "Udemy",
-      date: "In Progress",
-      imageUrl: "/images/webdev.png",
-    },
-    {
-      title: "More Certifications Coming Soon",
-      issuer: "Stay Tuned",
-      date: "2025",
-      imageUrl: "/images/webdev.png",
-    }
-  ];
 
   const handleImageClick = (src, title) => {
     setPopupCert({ src, title });

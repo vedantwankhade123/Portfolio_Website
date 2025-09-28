@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { projectsData } from '../data';
 
 const ProjectDetailPopup = ({ project, onClose }) => {
   if (!project) return null;
@@ -51,36 +52,9 @@ const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
   );
 };
 
-const Projects = () => {
+const Projects = ({ onViewAllClick }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const projectsData = [
-    {
-      videoSrc: "/videos/cleanCity.mp4",
-      title: "CleanCity - Waste Management",
-      description: "A web application for reporting and managing waste collection in urban areas. Features include real-time tracking, route optimization, and analytics dashboard.",
-      tech: ["React", "Node.js", "MongoDB", "Mapbox"],
-      githubUrl: "#",
-      liveDemoUrl: "#"
-    },
-    {
-      videoSrc: "/videos/Coming.mp4",
-      title: "Face Recognition Attendance",
-      description: "An automated attendance system using facial recognition. Includes real-time detection, attendance reports, and an admin dashboard.",
-      tech: ["Python", "OpenCV", "Flask", "SQLite"],
-      githubUrl: "#",
-      liveDemoUrl: "#"
-    },
-    {
-      videoSrc: "/videos/Coming.mp4",
-      title: "Task Management App",
-      description: "A collaborative task management application with features like task assignment, progress tracking, and team collaboration tools.",
-      tech: ["React", "Node.js", "Express", "MongoDB"],
-      githubUrl: "#",
-      liveDemoUrl: "#"
-    }
-  ];
 
   const handleViewClick = (project) => {
     setSelectedProject(project);
@@ -95,7 +69,7 @@ const Projects = () => {
       <div className="container">
         <div className="section-title-container">
           <h2 className="section-title">My Projects</h2>
-          <a href="#projects" className="view-all-link">
+          <a href="#!" onClick={onViewAllClick} className="view-all-link">
             View All <i className="fas fa-arrow-right"></i>
           </a>
         </div>
