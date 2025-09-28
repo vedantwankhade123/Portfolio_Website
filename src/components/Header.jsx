@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const sectionsRef = useRef({});
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
+
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      Object.entries(sectionsRef.current).forEach(([id, element]) => {
+        if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
+          setActiveSection(id);
+        }
+      });
     };
 
+    // Populate refs
+    const sectionElements = document.querySelectorAll('section[id]');
+    sectionElements.forEach(sec => {
+      sectionsRef.current[sec.id] = sec;
+    });
+
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => {
-      const newMenuState = !prev;
-      document.body.classList.toggle('no-scroll', newMenuState);
-      return newMenuState;
+      document.body.classList.toggle('no-scroll', !prev);
+      return !prev;
     });
   };
   
@@ -28,6 +40,15 @@ const Header = () => {
     setIsMenuOpen(false);
     document.body.classList.remove('no-scroll');
   };
+
+  const navLinks = [
+    { id: 'home', icon: 'fa-home', text: 'Home' },
+    { id: 'about', icon: 'fa-user', text: 'About' },
+    { id: 'education', icon: 'fa-university', text: 'Education' },
+    { id: 'skills', icon: 'fa-code', text: 'Skills' },
+    { id: 'projects', icon: 'fa-project-diagram', text: 'Projects' },
+    { id: 'contact', icon: 'fa-envelope', text: 'Contact' },
+  ];
 
   return (
     <header className={isScrolled ? 'scrolled' : ''}>
@@ -40,20 +61,27 @@ const Header = () => {
             </a>
           </div>
           <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <li><a href="#home" className="active" onClick={closeMenu}><i className="fas fa-home"></i> Home</a></li>
-            <li><a href="#about" onClick={closeMenu}><i className="fas fa-user"></i> About</a></li>
-            <li><a href="#education" onClick={closeMenu}><i className="fas fa-university"></i> Education</a></li>
-            <li><a href="#skills" onClick={closeMenu}><i className="fas fa-code"></i> Skills</a></li>
-            <li><a href="#projects" onClick={closeMenu}><i className="fas fa-project-diagram"></i> Projects</a></li>
-            <li><a href="#contact" onClick={closeMenu}><i className="fas fa-envelope"></i> Contact</a></li>
+            {navLinks.map(link => (
+              <li key={link.id}>
+                <a 
+                  href={`#${link.id}`} 
+                  className={activeSection === link.id ? 'active' : ''} 
+                  onClick={closeMenu}
+                >
+                  <i className={`fas ${link.icon}`}></i> {link.text}
+                </a>
+              </li>
+            ))}
             <li className="nav-cta"><a href="#" download className="resume-btn"><i className="fas fa-download"></i> Resume</a></li>
           </ul>
-          <ThemeToggle />
-          <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-            <div></div>
-            <div></div>
-            <div></div>
-          </button>
+          <div style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
+            <ThemeToggle />
+            <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
+              <div></div>
+              <div></div>
+              <div></div>
+            </button>
+          </div>
         </nav>
       </div>
     </header>

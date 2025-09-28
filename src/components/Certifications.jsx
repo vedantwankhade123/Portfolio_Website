@@ -8,8 +8,8 @@ const CertificationCard = ({ title, issuer, date, imageUrl, altText }) => {
   };
 
   return (
-    <div className={`certification-card ${isOpen ? 'active' : ''}`}>
-      <div className="certification-header" onClick={toggleView} style={{ cursor: 'pointer' }}>
+    <div className={`certification-card glass-card ${isOpen ? 'active' : ''}`}>
+      <div className="certification-header" onClick={toggleView}>
         <div className="certification-info">
           <h3>{title}</h3>
           <div className="certification-meta">
