@@ -544,14 +544,12 @@ body.dark-mode .nav-links a.active {
 
 .skill-item {
     text-align: center;
-    padding: var(--spacing-5);
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    border-radius: 24px !important;
+    padding: var(--spacing-4);
+    transition: transform var(--transition-speed) ease;
 }
 
 .skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 35px var(--shadow-color);
+    transform: translateY(-8px);
 }
 
 .skill-icon {
@@ -570,13 +568,22 @@ body.dark-mode .nav-links a.active {
 .css-icon { color: #1572B6; }
 .js-icon { color: #F7DF1E; }
 .react-icon { color: #61DAFB; }
+.bootstrap-icon { color: #7952B3; }
+.jquery-icon { color: #0769AD; }
 .python-icon { color: #3776AB; }
 .sql-icon { color: #00758F; }
+.postgres-icon { color: #336791; }
 .node-icon { color: #339933; }
 .django-icon { color: #092E20; }
+.supabase-icon { color: #3ECF8E; }
+.github-icon { color: #181717; }
+
 
 body.dark-mode .django-icon {
     color: #44B78B; /* Lighter green for dark mode */
+}
+body.dark-mode .github-icon {
+    color: #FFFFFF;
 }
 
 

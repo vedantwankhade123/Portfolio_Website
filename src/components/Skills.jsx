@@ -5,17 +5,25 @@ const frontendSkills = [
   { name: 'CSS3', icon: 'fab fa-css3-alt', colorClass: 'css-icon' },
   { name: 'JavaScript', icon: 'fab fa-js', colorClass: 'js-icon' },
   { name: 'React', icon: 'fab fa-react', colorClass: 'react-icon' },
+  { name: 'Bootstrap', icon: 'fab fa-bootstrap', colorClass: 'bootstrap-icon' },
+  { name: 'jQuery', icon: 'fas fa-code', colorClass: 'jquery-icon' },
 ];
 
-const backendSkills = [
+const backendAndDatabasesSkills = [
   { name: 'Python', icon: 'fab fa-python', colorClass: 'python-icon' },
-  { name: 'SQL', icon: 'fas fa-database', colorClass: 'sql-icon' },
   { name: 'Node.js', icon: 'fab fa-node-js', colorClass: 'node-icon' },
-  { name: 'Django', icon: 'fas fa-server', colorClass: 'django-icon' }, // Using a generic server icon for Django
+  { name: 'Django', icon: 'fas fa-server', colorClass: 'django-icon' },
+  { name: 'SQL', icon: 'fas fa-database', colorClass: 'sql-icon' },
+  { name: 'PostgreSQL', icon: 'fas fa-database', colorClass: 'postgres-icon' },
+  { name: 'Supabase', icon: 'fas fa-bolt', colorClass: 'supabase-icon' },
+];
+
+const toolsSkills = [
+  { name: 'GitHub', icon: 'fab fa-github', colorClass: 'github-icon' },
 ];
 
 const SkillCard = ({ name, icon, colorClass }) => (
-  <div className="skill-item glass-card">
+  <div className="skill-item">
     <div className={`skill-icon ${colorClass}`}>
       <i className={icon}></i>
     </div>
@@ -36,9 +44,15 @@ const Skills = () => {
             </div>
           </div>
           <div className="skill-category">
-            <h3>Backend Development</h3>
+            <h3>Backend & Databases</h3>
             <div className="skills-grid">
-              {backendSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
+              {backendAndDatabasesSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
+            </div>
+          </div>
+          <div className="skill-category">
+            <h3>Tools</h3>
+            <div className="skills-grid">
+              {toolsSkills.map(skill => <SkillCard key={skill.name} {...skill} />)}
             </div>
           </div>
         </div>
