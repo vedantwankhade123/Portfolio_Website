@@ -857,6 +857,7 @@ body.dark-mode .django-icon {
 }
 .social-icon:hover { 
     transform: translateY(-5px) scale(1.1); 
+    color: white;
 }
 
 .form-group { margin-bottom: var(--spacing-5); }
@@ -907,6 +908,9 @@ footer {
     color: white;
     transform: translateY(0);
 }
+.btn:active {
+    transform: translateY(1px);
+}
 .primary-btn { 
     background: var(--primary-gradient); 
     color: white; 
@@ -925,6 +929,11 @@ footer {
     color: white; 
     border-color: transparent;
     transform: translateY(-3px);
+}
+.secondary-btn:active {
+    background: var(--primary-gradient);
+    color: white;
+    border-color: transparent;
 }
 
 /* Video Popup */
