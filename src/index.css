@@ -234,6 +234,11 @@ section {
     border-color: transparent;
 }
 
+.social-icon.gmail-icon {
+    background-color: #D44638;
+    border-color: #D44638;
+}
+
 /* Header Styles */
 .top-bar {
     position: fixed;
