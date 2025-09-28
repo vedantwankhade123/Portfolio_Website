@@ -41,12 +41,12 @@ const Header = () => {
   };
 
   const navLinks = [
-    { id: 'home', text: 'Home' },
-    { id: 'about', text: 'About' },
-    { id: 'education', text: 'Education' },
-    { id: 'skills', text: 'Skills' },
-    { id: 'projects', text: 'Projects' },
-    { id: 'contact', text: 'Contact' },
+    { id: 'home', text: 'Home', icon: 'fas fa-home' },
+    { id: 'about', text: 'About', icon: 'fas fa-user' },
+    { id: 'education', text: 'Education', icon: 'fas fa-graduation-cap' },
+    { id: 'skills', text: 'Skills', icon: 'fas fa-cogs' },
+    { id: 'projects', text: 'Projects', icon: 'fas fa-briefcase' },
+    { id: 'contact', text: 'Contact', icon: 'fas fa-envelope' },
   ];
 
   return (
@@ -67,8 +67,10 @@ const Header = () => {
                   href={`#${link.id}`} 
                   className={activeSection === link.id ? 'active' : ''} 
                   onClick={closeMenu}
+                  title={link.text}
                 >
-                  {link.text}
+                  <i className={`nav-link-icon ${link.icon}`}></i>
+                  <span className="nav-link-text">{link.text}</span>
                 </a>
               </li>
             ))}
