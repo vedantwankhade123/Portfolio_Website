@@ -1559,8 +1559,9 @@ body.dark-mode .django-icon {
 .all-content-sidebar {
     flex: 0 0 250px;
     background: var(--hover-color);
-    padding: var(--spacing-8) var(--spacing-5);
-    border-right: 1px solid var(--border-color);
+    padding: var(--spacing-5);
+    margin: 5px;
+    border-radius: 16px;
 }
 .all-content-sidebar h2 {
     font-size: 1.5rem;
@@ -1842,8 +1843,6 @@ body.dark-mode .django-icon {
     }
     .all-content-sidebar {
         flex: 0 0 auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
         padding: var(--spacing-5);
     }
     .all-content-sidebar ul {
