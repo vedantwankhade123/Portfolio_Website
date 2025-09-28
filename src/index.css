@@ -12,7 +12,7 @@ body.dark-mode {
     --border-color: rgba(51, 65, 85, 0.5);
     --shadow-color: rgba(0, 0, 0, 0.25);
     --hover-color: #1e293b; /* A slightly lighter navy for hover states */
-    --primary-rgb: 74, 108, 247;
+    --primary-rgb: 148, 163, 184;
 }
 
 /* Light Mode Variables (within :root) */
@@ -28,10 +28,10 @@ body.dark-mode {
     --spacing-12: 6rem;
     
     /* Colors */
-    --primary-color: #4a6cf7;
-    --primary-dark: #3a58d6;
-    --primary-rgb: 74, 108, 247;
-    --secondary-color: #6366f1;
+    --primary-color: #8892b0;
+    --primary-dark: #64748b;
+    --primary-rgb: 136, 146, 176;
+    --secondary-color: #a8b2d1;
     --background-color: #f1f5f9;
     --card-bg: rgba(255, 255, 255, 0.6);
     --text-color: #0f172a;
@@ -198,10 +198,7 @@ section {
 
 /* Main Navigation */
 .main-nav {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    /* This is now part of the flex layout */
 }
 
 .nav-links {
@@ -583,7 +580,7 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .main-nav {
         display: none;
     }
