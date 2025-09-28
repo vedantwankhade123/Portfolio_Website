@@ -50,42 +50,44 @@ const Header = () => {
   ];
 
   return (
-    <header className={`top-bar glass-card ${isMenuOpen ? 'menu-open' : ''}`}>
-      <div className="logo">
-        <a href="#home" onClick={closeMenu}>
-          <span className="logo-text">Portfolio</span>
-          <span className="logo-dot"></span>
-        </a>
+    <header className={`top-bar ${isMenuOpen ? 'menu-open' : ''}`}>
+      <div className="container header-container">
+        <div className="logo">
+          <a href="#home" onClick={closeMenu}>
+            <span className="logo-text">Portfolio</span>
+            <span className="logo-dot"></span>
+          </a>
+        </div>
+
+        <nav className="main-nav">
+          <ul className="nav-links">
+            {navLinks.map(link => (
+              <li key={link.id}>
+                <a 
+                  href={`#${link.id}`} 
+                  className={activeSection === link.id ? 'active' : ''} 
+                  onClick={closeMenu}
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="header-actions">
+          <ThemeToggle />
+          <a href="#" download className="btn resume-btn">
+            <span>Resume</span>
+          </a>
+        </div>
+
+        <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
       </div>
-
-      <nav className="main-nav">
-        <ul className="nav-links">
-          {navLinks.map(link => (
-            <li key={link.id}>
-              <a 
-                href={`#${link.id}`} 
-                className={activeSection === link.id ? 'active' : ''} 
-                onClick={closeMenu}
-              >
-                {link.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className="header-actions">
-        <ThemeToggle />
-        <a href="#" download className="btn resume-btn">
-          <span>Resume</span>
-        </a>
-      </div>
-
-      <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-        <div></div>
-        <div></div>
-        <div></div>
-      </button>
     </header>
   );
 };

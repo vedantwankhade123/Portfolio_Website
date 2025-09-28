@@ -130,29 +130,22 @@ section {
 /* Header Styles */
 .top-bar {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 1200px;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1001;
-    padding: 10px 30px;
+    padding: 15px 0;
+    transition: all 0.4s ease;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.4s ease;
-    animation: slideUpFadeIn 0.8s ease-out forwards;
-}
-
-@keyframes slideUpFadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -20px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
 }
 
 .logo a {
@@ -197,10 +190,6 @@ section {
 }
 
 /* Main Navigation */
-.main-nav {
-    /* This is now part of the flex layout */
-}
-
 .nav-links {
     display: flex;
     align-items: center;
@@ -580,11 +569,8 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .main-nav {
-        display: none;
-    }
-    .header-actions {
+@media (max-width: 992px) {
+    .main-nav, .header-actions {
         display: none;
     }
 
