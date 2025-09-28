@@ -36,11 +36,6 @@ const Hero = () => {
         <a href="#about"><i className="fas fa-chevron-down"></i></a>
       </div>
       <div className="hero-background">
-        <div className="shooting-stars">
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-        </div>
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
         <div className="shape shape3"></div>
