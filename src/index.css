@@ -215,6 +215,7 @@ section {
 .social-icon:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    color: white; /* Keep icon color white on hover */
 }
 
 /* Social Icon Brand Colors */
@@ -273,6 +274,7 @@ section {
     color: var(--text-color);
     display: flex;
     align-items: center;
+    transition: color var(--transition-speed) ease;
 }
 
 .logo-text {
@@ -282,7 +284,7 @@ section {
     font-size: 1.8rem;
     color: var(--text-color);
     letter-spacing: -0.2em; /* Overlap the letters to create the W effect */
-    transition: letter-spacing: 0.3s ease;
+    transition: letter-spacing 0.3s ease, color var(--transition-speed) ease;
 }
 
 .logo a:hover .logo-text {
