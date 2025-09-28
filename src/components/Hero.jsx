@@ -1,18 +1,25 @@
 import React from 'react';
+import TypingEffect from './TypingEffect';
 
 const Hero = () => {
+  const roles = ["Creative Full Stack Developer", "Python Programmer", "Problem Solver"];
+
   return (
     <section id="home" className="hero">
       <div className="container">
         <div className="hero-content">
           <div className="hero-image">
-            <div className="img-container">
-              <img src="/images/profile.jpg" alt="Profile Picture" />
+            <div className="hero-image-wrapper">
+              <div className="img-container">
+                <img src="/images/profile.jpg" alt="Profile Picture" />
+              </div>
             </div>
           </div>
           <div className="hero-text">
             <h1 className="animate-text">Hello, I'm <span className="highlight">Vedant Wankhade</span></h1>
-            <h2 className="animate-text delay-1">Creative Full Stack Developer</h2>
+            <h2 className="animate-text delay-1">
+              <TypingEffect words={roles} />
+            </h2>
             <p className="animate-text delay-2">I build dynamic and responsive web applications, turning ideas into elegant digital experiences.</p>
             <div className="cta-buttons animate-text delay-3">
               <a href="#projects" className="btn primary-btn">View My Work</a>
