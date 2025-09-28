@@ -88,7 +88,12 @@ const Projects = ({ onViewAllClick }) => {
           ))}
         </div>
       </div>
-      <ProjectDetailPopup project={selectedProject} onClose={closePopup} />
+      <ProjectDetailPopup 
+        project={selectedProject} 
+        projects={projectsData}
+        onClose={closePopup}
+        onSelectProject={setSelectedProject}
+      />
     </section>
   );
 };

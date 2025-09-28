@@ -32,64 +32,66 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
     };
 
     return (
-        <div className="all-content-popup active" onClick={onClose}>
-            <div className="all-content-popup-content" onClick={(e) => e.stopPropagation()}>
-                <button onClick={onClose} className="close-popup main-close-btn">&times;</button>
-                <div className="all-content-sidebar">
-                    <h2>Explore</h2>
-                    <ul>
-                        <li>
-                            <button 
-                                className={`sidebar-btn ${activeTab === 'projects' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('projects')}
-                            >
-                                <i className="fas fa-briefcase"></i> Projects
-                            </button>
-                        </li>
-                        <li>
-                            <button 
-                                className={`sidebar-btn ${activeTab === 'certifications' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('certifications')}
-                            >
-                                <i className="fas fa-award"></i> Certifications
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="all-content-main">
-                    {activeTab === 'projects' && (
-                        <div className="content-grid projects-grid">
-                            {projects.map((project, index) => (
-                                <div className="popup-project-card" key={index} onClick={() => handleViewProject(project)}>
-                                    <div className="popup-project-video">
-                                        <video autoPlay loop muted playsInline>
-                                            <source src={project.videoSrc} type="video/mp4" />
-                                        </video>
-                                    </div>
-                                    <div className="popup-project-info">
-                                        <h4>{project.title}</h4>
-                                        <div className="popup-project-links">
-                                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub"><i className="fab fa-github"></i></a>
-                                            <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" title="Live Demo"><i className="fas fa-link"></i></a>
+        <>
+            <div className="all-content-popup active" onClick={onClose}>
+                <div className="all-content-popup-content" onClick={(e) => e.stopPropagation()}>
+                    <button onClick={onClose} className="close-popup main-close-btn">&times;</button>
+                    <div className="all-content-sidebar">
+                        <h2>Explore</h2>
+                        <ul>
+                            <li>
+                                <button 
+                                    className={`sidebar-btn ${activeTab === 'projects' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('projects')}
+                                >
+                                    <i className="fas fa-briefcase"></i> Projects
+                                </button>
+                            </li>
+                            <li>
+                                <button 
+                                    className={`sidebar-btn ${activeTab === 'certifications' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('certifications')}
+                                >
+                                    <i className="fas fa-award"></i> Certifications
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="all-content-main">
+                        {activeTab === 'projects' && (
+                            <div className="content-grid projects-grid">
+                                {projects.map((project, index) => (
+                                    <div className="popup-project-card" key={index} onClick={() => handleViewProject(project)}>
+                                        <div className="popup-project-video">
+                                            <video autoPlay loop muted playsInline>
+                                                <source src={project.videoSrc} type="video/mp4" />
+                                            </video>
+                                        </div>
+                                        <div className="popup-project-info">
+                                            <h4>{project.title}</h4>
+                                            <div className="popup-project-links">
+                                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub"><i className="fab fa-github"></i></a>
+                                                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" title="Live Demo"><i className="fas fa-link"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                    {activeTab === 'certifications' && (
-                        <div className="content-grid certs-grid">
-                            {certifications.map((cert, index) => (
-                                <div className="popup-cert-card" key={index}>
-                                    <img src={cert.imageUrl} alt={cert.title} />
-                                    <div className="popup-cert-overlay">
-                                        <h5>{cert.title}</h5>
-                                        <button onClick={() => handleViewCert(cert.imageUrl, cert.title)} className="btn primary-btn">View</button>
+                                ))}
+                            </div>
+                        )}
+                        {activeTab === 'certifications' && (
+                            <div className="content-grid certs-grid">
+                                {certifications.map((cert, index) => (
+                                    <div className="popup-cert-card" key={index}>
+                                        <img src={cert.imageUrl} alt={cert.title} />
+                                        <div className="popup-cert-overlay">
+                                            <h5>{cert.title}</h5>
+                                            <button onClick={() => handleViewCert(cert.imageUrl, cert.title)} className="btn primary-btn">View</button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
             <CertificatePopup 
@@ -99,9 +101,11 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
             />
             <ProjectDetailPopup 
                 project={selectedProject}
+                projects={projects}
                 onClose={closeProjectPopup}
+                onSelectProject={setSelectedProject}
             />
-        </div>
+        </>
     );
 };
 
