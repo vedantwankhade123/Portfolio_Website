@@ -646,17 +646,33 @@ body.dark-mode .django-icon {
 }
 
 .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-radius: 24px !important; /* Override glass-card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px var(--shadow-color);
 }
 
 .project-card .video-container {
     cursor: pointer;
     position: relative;
-    border-radius: 16px;
     overflow: hidden;
+}
+
+.project-card .video-container video {
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .video-container video {
+    transform: scale(1.05);
 }
 
 .project-card .video-container::after {
@@ -686,14 +702,15 @@ body.dark-mode .django-icon {
 
 .project-content { padding: var(--spacing-5); flex-grow: 1; display: flex; flex-direction: column; }
 .project-content h3 { margin-bottom: 10px; }
-.project-content p { margin-bottom: var(--spacing-4); flex-grow: 1; }
+.project-content p { margin-bottom: var(--spacing-4); flex-grow: 1; color: var(--text-muted); }
 .project-tech { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--spacing-5); }
 .project-tech span { 
-    background: var(--primary-gradient);
-    color: white;
+    background: var(--hover-color);
+    color: var(--text-muted);
     padding: 5px 12px; 
     border-radius: 20px; 
     font-size: 0.8rem; 
+    font-weight: 500;
 }
 .project-links { display: flex; gap: 15px; margin-top: auto; }
 
