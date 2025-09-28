@@ -2,7 +2,35 @@ import React from 'react';
 import TypingEffect from './TypingEffect';
 
 const Hero = () => {
-  const roles = ["Full Stack Developer", "Python Programmer", "Digital Craftsman"];
+  const codeLines = [
+    {
+      tokens: [
+        { text: 'const', className: 'keyword' },
+        { text: ' identity ', className: 'variable' },
+        { text: '= ', className: 'operator' },
+        { text: '"Full Stack Developer"', className: 'string' },
+        { text: ';', className: 'punctuation' },
+      ],
+    },
+    {
+      tokens: [
+        { text: 'const', className: 'keyword' },
+        { text: ' skill ', className: 'variable' },
+        { text: '= ', className: 'operator' },
+        { text: '"Python Programmer"', className: 'string' },
+        { text: ';', className: 'punctuation' },
+      ],
+    },
+    {
+      tokens: [
+        { text: 'const', className: 'keyword' },
+        { text: ' passion ', className: 'variable' },
+        { text: '= ', className: 'operator' },
+        { text: '"Digital Craftsman"', className: 'string' },
+        { text: ';', className: 'punctuation' },
+      ],
+    },
+  ];
 
   return (
     <section id="home" className="hero">
@@ -18,7 +46,7 @@ const Hero = () => {
           <div className="hero-text">
             <h1 className="animate-text"><span className="highlight">Vedant Wankhade</span></h1>
             <h2 className="animate-text delay-1">
-              <TypingEffect words={roles} typeSpeed={70} deleteSpeed={40} />
+              <TypingEffect lines={codeLines} typeSpeed={70} deleteSpeed={40} />
             </h2>
             <div className="cta-buttons animate-text delay-3">
               <a href="#projects" className="btn primary-btn">View My Work</a>
