@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      ogl:
+        specifier: ^1.0.11
+        version: 1.0.11
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -482,6 +485,9 @@ packages:
   node-releases@2.0.21:
     resolution: {integrity: sha512-5b0pgg78U3hwXkCM8Z9b2FJdPZlr9Psr9V2gQPESdGHqbntyFJKFW4r5TeWGFzafGY3hzs1JC62VEQMbl1JFkw==}
 
+  ogl@1.0.11:
+    resolution: {integrity: sha512-kUpC154AFfxi16pmZUK4jk3J+8zxwTWGPo03EoYA8QPbzikHoaC82n6pNTbd+oEaJonaE8aPWBlX7ad9zrqLsA==}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -948,6 +954,8 @@ snapshots:
   nanoid@3.3.11: {}
 
   node-releases@2.0.21: {}
+
+  ogl@1.0.11: {}
 
   picocolors@1.1.1: {}
 

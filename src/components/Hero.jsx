@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TypingEffect from './TypingEffect';
+import LightRays from './LightRays';
 
 const Hero = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    // Set initial theme state
+    const isDark = document.body.classList.contains('dark-mode');
+    setIsDarkMode(isDark);
+
+    // Observe body class changes to update theme state
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.attributeName === 'class') {
+          const newIsDark = document.body.classList.contains('dark-mode');
+          setIsDarkMode(newIsDark);
+        }
+      });
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
   const codeLines = [
     {
       tokens: [
@@ -64,6 +87,17 @@ const Hero = () => {
         <a href="#about"><i className="fas fa-chevron-down"></i></a>
       </div>
       <div className="hero-background">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor={isDarkMode ? '#64748b' : '#a8b2d1'}
+          raysSpeed={1.5}
+          lightSpread={0.7}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
         <div className="shape shape3"></div>

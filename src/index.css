@@ -547,8 +547,6 @@ body.dark-mode .hero h1 .highlight {
         radial-gradient(2px 2px at 40% 50%, white, transparent),
         radial-gradient(2px 2px at 5% 5%, white, transparent);
     background-size: 250px 250px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
 }
 
 body.dark-mode .hero-background {
