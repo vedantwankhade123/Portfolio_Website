@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TypingEffect from './TypingEffect';
+import FadingText from './FadingText';
 import Beams from './Beams';
 
 const Hero = () => {
@@ -25,10 +25,10 @@ const Hero = () => {
     return () => observer.disconnect();
   }, []);
 
-  const simpleLines = [
-    { tokens: [{ text: 'Full Stack Developer', className: 'role-text' }] },
-    { tokens: [{ text: 'Python Programmer', className: 'role-text' }] },
-    { tokens: [{ text: 'Digital Craftsman', className: 'role-text' }] },
+  const roles = [
+    'Full Stack Developer',
+    'Python Programmer',
+    'Digital Craftsman',
   ];
 
   return (
@@ -45,7 +45,7 @@ const Hero = () => {
           <div className="hero-text">
             <h1 className="animate-text"><span className="highlight">Vedant Wankhade</span></h1>
             <h2 className="animate-text delay-1">
-              <TypingEffect lines={simpleLines} typeSpeed={100} deleteSpeed={60} delay={1500} />
+              <FadingText lines={roles} duration={3000} />
             </h2>
             <div className="cta-buttons animate-text delay-3">
               <a href="#projects" className="btn primary-btn">View My Work</a>
