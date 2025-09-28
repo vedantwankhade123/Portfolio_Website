@@ -53,7 +53,7 @@ const Header = () => {
     { id: 'home', text: 'Home', icon: 'fas fa-home' },
     { id: 'about', text: 'About', icon: 'fas fa-user' },
     { id: 'education', text: 'Education', icon: 'fas fa-graduation-cap' },
-    { id: 'skills', text: 'Skills', icon: 'fas fa-cogs' },
+    { id: 'skills', text: 'Skills', icon: 'fas fa-code' },
     { id: 'projects', text: 'Projects', icon: 'fas fa-briefcase' },
     { id: 'contact', text: 'Contact', icon: 'fas fa-envelope' },
   ];
@@ -88,7 +88,7 @@ const Header = () => {
 
         <div className="header-actions">
           <ThemeToggle />
-          <a href="#" download className="btn resume-btn">
+          <a href="#" download className="btn primary-btn">
             <span>Resume</span>
           </a>
         </div>

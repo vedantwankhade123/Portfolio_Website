@@ -28,17 +28,18 @@ body.dark-mode {
     --spacing-12: 6rem;
     
     /* Colors */
-    --primary-color: #8892b0;
-    --primary-dark: #64748b;
-    --primary-rgb: 136, 146, 176;
+    --primary-color: #4a6cf7;
+    --primary-dark: #3b56c5;
+    --primary-rgb: 74, 108, 247;
     --secondary-color: #a8b2d1;
     --background-color: #f1f5f9;
     --card-bg: rgba(255, 255, 255, 0.6);
-    --text-color: #0f172a;
+    --text-color: #212529;
     --text-muted: #64748b;
     --border-color: #e2e8f0;
     --shadow-color: rgba(15, 23, 42, 0.08);
     --hover-color: #e2e8f0;
+    --primary-gradient: linear-gradient(45deg, #4a6cf7, #8a9efc);
     
     /* Transitions */
     --transition-speed: 0.3s;
@@ -216,19 +217,6 @@ section {
     gap: 15px;
 }
 
-.resume-btn {
-    background-color: var(--text-color);
-    color: var(--background-color) !important;
-    padding: 6px 20px;
-    font-weight: 600;
-    border-radius: 50px;
-}
-
-.resume-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
 /* Main Navigation */
 .nav-links {
     display: flex;
@@ -254,8 +242,8 @@ section {
 }
 
 .nav-links a.active {
-    background-color: var(--text-color);
-    color: var(--background-color);
+    background: var(--primary-gradient);
+    color: white;
     box-shadow: 0 4px 12px var(--shadow-color);
 }
 
@@ -272,9 +260,9 @@ body.dark-mode .nav-links a.active {
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
-    background-color: var(--text-color);
-    border: 1px solid var(--text-color);
-    color: var(--background-color);
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -288,8 +276,7 @@ body.dark-mode .nav-links a.active {
 }
 
 .theme-toggle-btn:hover {
-    background-color: var(--primary-dark);
-    color: var(--background-color);
+    opacity: 0.9;
     transform: rotate(15deg);
 }
 
@@ -472,8 +459,8 @@ body.dark-mode .nav-links a.active {
 }
 
 .detail-item {
-    background-color: var(--text-color);
-    color: var(--background-color);
+    background: var(--primary-gradient);
+    color: white;
     padding: 12px 24px;
     border-radius: 50px;
     display: flex;
@@ -490,7 +477,7 @@ body.dark-mode .nav-links a.active {
 
 .detail-item i {
     font-size: 1.2rem;
-    color: var(--primary-color);
+    color: white;
 }
 
 .about-text .primary-btn {
@@ -553,8 +540,8 @@ body.dark-mode .nav-links a.active {
     top: 0;
     width: 50px;
     height: 50px;
-    background: var(--text-color);
-    color: var(--background-color);
+    background: var(--primary-gradient);
+    color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -568,8 +555,8 @@ body.dark-mode .nav-links a.active {
 .timeline-date { font-size: 0.9rem; color: var(--text-muted); margin: 5px 0 10px; }
 .grade-badge { 
     display: inline-block; 
-    background: var(--text-color); 
-    color: var(--background-color); 
+    background: var(--primary-gradient); 
+    color: white; 
     padding: 3px 12px; 
     border-radius: 20px; 
     font-size: 0.8rem; 
@@ -627,8 +614,8 @@ body.dark-mode .nav-links a.active {
 .project-content p { margin-bottom: var(--spacing-4); flex-grow: 1; }
 .project-tech { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--spacing-5); }
 .project-tech span { 
-    background-color: var(--text-color);
-    color: var(--background-color);
+    background: var(--primary-gradient);
+    color: white;
     padding: 5px 12px; 
     border-radius: 20px; 
     font-size: 0.8rem; 
@@ -665,15 +652,14 @@ body.dark-mode .nav-links a.active {
     justify-content: center; 
     width: 45px; 
     height: 45px; 
-    background-color: var(--text-color);
-    color: var(--background-color);
+    background: var(--primary-gradient);
+    color: white;
     border-radius: 50%; 
     font-size: 1.2rem; 
     transition: all var(--transition-speed) ease; 
 }
 .social-icon:hover { 
-    background-color: var(--primary-dark); 
-    color: var(--background-color); 
+    opacity: 0.9;
     transform: translateY(-5px); 
 }
 
@@ -701,14 +687,14 @@ footer {
 .back-to-top { 
     width: 40px; 
     height: 40px; 
-    background-color: var(--text-color);
+    background: var(--primary-gradient);
     border-radius: 50%; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
 }
 .back-to-top a { 
-    color: var(--background-color); 
+    color: white; 
 }
 
 /* Buttons */
@@ -722,25 +708,26 @@ footer {
     border: none;
     font-size: 1rem;
     text-align: center;
+    color: white;
 }
 .primary-btn { 
-    background-color: var(--text-color); 
-    color: var(--background-color); 
+    background: var(--primary-gradient); 
+    color: white; 
 }
 .primary-btn:hover {
-    background-color: var(--primary-dark);
-    color: var(--background-color);
+    opacity: 0.9;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.25);
 }
 .secondary-btn { 
     background-color: transparent; 
-    color: var(--text-color); 
-    border: 2px solid var(--text-color); 
+    color: var(--primary-color); 
+    border: 2px solid var(--primary-color); 
 }
 .secondary-btn:hover { 
-    background-color: var(--text-color); 
-    color: var(--background-color); 
+    background: var(--primary-gradient); 
+    color: white; 
+    border-color: transparent;
 }
 
 /* Video Popup */
