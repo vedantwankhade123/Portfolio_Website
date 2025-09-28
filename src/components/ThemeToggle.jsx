@@ -31,19 +31,13 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div className="theme-toggle">
-      <input 
-        type="checkbox" 
-        id="checkbox" 
-        checked={!isDarkMode} 
-        onChange={handleThemeChange} 
-      />
-      <label htmlFor="checkbox" className="toggle-label">
-        <i className="fas fa-moon"></i>
-        <i className="fas fa-sun"></i>
-        <span className="toggle-ball"></span>
-      </label>
-    </div>
+    <button 
+      onClick={handleThemeChange} 
+      className="theme-toggle-btn" 
+      aria-label="Toggle theme"
+    >
+      <i className={`fas ${isDarkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+    </button>
   );
 };
 
