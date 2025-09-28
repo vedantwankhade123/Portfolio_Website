@@ -878,6 +878,8 @@ body.dark-mode .django-icon {
     max-width: 600px;
     height: 400px;
     position: relative;
+    perspective: 1500px;
+    transform-style: preserve-3d;
 }
 
 .certification-card-container {
@@ -886,14 +888,7 @@ body.dark-mode .django-icon {
     left: 0;
     width: 100%;
     height: 100%;
-    transition: opacity 0.8s ease-in-out;
-    opacity: 0;
-    z-index: 1;
-}
-
-.current-cert {
-    opacity: 1;
-    z-index: 10;
+    transition: transform 0.5s ease, opacity 0.5s ease, z-index 0s 0.25s;
 }
 
 .certification-card {
@@ -915,6 +910,30 @@ body.dark-mode .django-icon {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.current-cert {
+    transform: translateZ(0);
+    opacity: 1;
+    z-index: 10;
+}
+
+.prev-cert {
+    transform: translateX(-55%) translateZ(-200px) rotateY(35deg);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.next-cert {
+    transform: translateX(55%) translateZ(-200px) rotateY(-35deg);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.hidden-cert {
+    transform: scale(0.7);
+    opacity: 0;
+    z-index: 1;
 }
 
 .certification-overlay {
@@ -1671,6 +1690,12 @@ footer {
     .certifications-carousel {
         height: 250px;
         max-width: 400px;
+    }
+    .prev-cert {
+        transform: translateX(-45%) translateZ(-150px) rotateY(35deg);
+    }
+    .next-cert {
+        transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
     }
 
     .projects-carousel {

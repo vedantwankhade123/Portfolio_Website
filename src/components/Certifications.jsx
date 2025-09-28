@@ -61,7 +61,18 @@ const Certifications = ({ onViewAllClick }) => {
         >
           <div className="certifications-carousel">
             {certificationsData.map((cert, index) => {
-              const className = `certification-card-container ${index === currentIndex ? 'current-cert' : ''}`;
+              const totalCerts = certificationsData.length;
+              let className = 'certification-card-container';
+              if (index === currentIndex) {
+                className += ' current-cert';
+              } else if (index === (currentIndex - 1 + totalCerts) % totalCerts) {
+                className += ' prev-cert';
+              } else if (index === (currentIndex + 1) % totalCerts) {
+                className += ' next-cert';
+              } else {
+                className += ' hidden-cert';
+              }
+
               return (
                 <div className={className} key={index}>
                   <CertificationCard {...cert} onImageClick={handleImageClick} />
