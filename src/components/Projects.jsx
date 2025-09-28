@@ -93,7 +93,12 @@ const Projects = () => {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2 className="section-title">My Projects</h2>
+        <div className="section-title-container">
+          <h2 className="section-title">My Projects</h2>
+          <a href="#projects" className="view-all-link">
+            View All <i className="fas fa-arrow-right"></i>
+          </a>
+        </div>
         <div className="projects-carousel-wrapper">
           <div className="projects-carousel">
             {projectsData.map((project, index) => {
