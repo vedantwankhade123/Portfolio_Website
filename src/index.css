@@ -139,15 +139,6 @@ section {
     }
 }
 
-@keyframes floatAnimation {
-    0%, 100% {
-        transform: translate(-50%, -50%) translateY(0);
-    }
-    50% {
-        transform: translate(-50%, -50%) translateY(-15px);
-    }
-}
-
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -360,7 +351,7 @@ body.dark-mode .nav-links a.active {
     position: absolute;
     top: 50%;
     left: 50%;
-    animation: floatAnimation 4s ease-in-out infinite;
+    transform: translate(-50%, -50%);
 }
 
 .hero-image .img-container img {
