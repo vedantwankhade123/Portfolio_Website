@@ -1232,6 +1232,15 @@ footer {
     flex-wrap: wrap;
     gap: 15px;
 }
+.popup-sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.popup-sidebar-actions .btn {
+    width: 100%;
+    justify-content: center;
+}
 .popup-sidebar h4 {
     font-size: 1.2rem;
     margin-bottom: var(--spacing-4);

@@ -36,6 +36,14 @@ const ProjectDetailPopup = ({ project, projects, onClose, onSelectProject }) => 
           </div>
           <div className="popup-sidebar">
             <div className="sidebar-section">
+              <h4>Actions</h4>
+              <div className="popup-sidebar-actions">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fab fa-github"></i> GitHub</a>
+                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fas fa-link"></i> Live Demo</a>
+                <a href={project.videoSrc} download={`${project.title.replace(/\s+/g, '_')}.mp4`} className="btn secondary-btn"><i className="fas fa-download"></i> Download Video</a>
+              </div>
+            </div>
+            <div className="sidebar-section">
               <h4>Tech Stack</h4>
               <div className="popup-tech-stack">
                 {project.tech.map(t => (
