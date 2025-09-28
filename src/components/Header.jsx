@@ -2,15 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const sectionsRef = useRef({});
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       let currentSection = 'home';
       Object.entries(sectionsRef.current).forEach(([id, element]) => {
@@ -21,7 +18,6 @@ const Header = () => {
       setActiveSection(currentSection);
     };
 
-    // Populate refs
     const sectionElements = document.querySelectorAll('section[id]');
     sectionElements.forEach(sec => {
       sectionsRef.current[sec.id] = sec;
@@ -54,28 +50,15 @@ const Header = () => {
   ];
 
   return (
-    <header className={`glass-card ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <nav>
+    <>
+      <header className="top-bar">
+        <div className="container">
           <div className="logo">
             <a href="#home" onClick={closeMenu}>
               <span className="logo-text">Portfolio</span>
               <span className="logo-dot"></span>
             </a>
           </div>
-          <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            {navLinks.map(link => (
-              <li key={link.id}>
-                <a 
-                  href={`#${link.id}`} 
-                  className={activeSection === link.id ? 'active' : ''} 
-                  onClick={closeMenu}
-                >
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
           <div className="nav-right-group">
             <a href="#" download className="btn primary-btn resume-btn">
               <i className="fas fa-download"></i>
@@ -88,9 +71,25 @@ const Header = () => {
               <div></div>
             </button>
           </div>
-        </nav>
-      </div>
-    </header>
+        </div>
+      </header>
+
+      <nav className={`floating-nav glass-card ${isMenuOpen ? 'mobile-menu-active' : ''}`}>
+        <ul className="nav-links">
+          {navLinks.map(link => (
+            <li key={link.id}>
+              <a 
+                href={`#${link.id}`} 
+                className={activeSection === link.id ? 'active' : ''} 
+                onClick={closeMenu}
+              >
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 

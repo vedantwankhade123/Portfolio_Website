@@ -5,6 +5,11 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container">
         <div className="hero-content">
+          <div className="hero-image">
+            <div className="img-container">
+              <img src="/images/profile.jpg" alt="Profile Picture" />
+            </div>
+          </div>
           <div className="hero-text">
             <h1 className="animate-text">Hello, I'm <span className="highlight">Vedant Wankhade</span></h1>
             <h2 className="animate-text delay-1">Full Stack Developer</h2>
