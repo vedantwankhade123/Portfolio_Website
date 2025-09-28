@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,7 +8,6 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +19,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('Sending...');
     
     const templateParams = {
       from_name: formData.name,
@@ -28,18 +27,19 @@ const Contact = () => {
       message: formData.message,
     };
 
-    // NOTE: You may need to create an EmailJS account and get your own Service ID and Template ID
-    emailjs.send('service_portfolio', 'template_portfolio', templateParams)
-      .then((response) => {
-         console.log('SUCCESS!', response.status, response.text);
-         setStatus('Message sent successfully!');
-         setFormData({ name: '', email: '', subject: '', message: '' });
-         setTimeout(() => setStatus(''), 3000);
-      }, (err) => {
-         console.log('FAILED...', err);
-         setStatus('Failed to send message. Please try again.');
-         setTimeout(() => setStatus(''), 3000);
-      });
+    const promise = emailjs.send('service_portfolio', 'template_portfolio', templateParams);
+
+    toast.promise(promise, {
+      loading: 'Sending message...',
+      success: () => {
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        return 'Message sent successfully!';
+      },
+      error: (err) => {
+        console.log('FAILED...', err);
+        return 'Failed to send message. Please try again.';
+      },
+    });
   };
 
   return (
@@ -89,7 +89,7 @@ const Contact = () => {
               <div className="form-group">
                 <textarea id="message" name="message" placeholder="Your Message" required value={formData.message} onChange={handleChange}></textarea>
               </div>
-              <button type="submit" className="btn primary-btn">{status || 'Send Message'}</button>
+              <button type="submit" className="btn primary-btn">Send Message</button>
             </form>
           </div>
         </div>
