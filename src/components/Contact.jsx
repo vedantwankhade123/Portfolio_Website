@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const sectionRef = useScrollAnimation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +45,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact scroll-animate" ref={sectionRef}>
       <div className="container">
         <h2 className="section-title">Get In Touch</h2>
         <div className="contact-content">

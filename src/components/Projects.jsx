@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ProjectDetailPopup from './ProjectDetailPopup';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
   return (
@@ -29,6 +30,7 @@ const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
 const Projects = ({ onViewAllClick, projects = [] }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const sectionRef = useScrollAnimation();
 
   const handleViewClick = (project) => {
     setSelectedProject(project);
@@ -49,7 +51,7 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
   }
 
   return (
-    <section id="projects" className="projects">
+    <section id="projects" className="projects scroll-animate" ref={sectionRef}>
       <div className="container">
         <div className="section-title-container">
           <h2 className="section-title">My Projects</h2>

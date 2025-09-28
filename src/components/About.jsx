@@ -1,12 +1,15 @@
 import React from 'react';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const About = ({ personalInfo, onResumeClick }) => {
+  const sectionRef = useScrollAnimation();
+
   if (!personalInfo) {
     return <section id="about" className="about"><div className="container"><h2 className="section-title">Loading...</h2></div></section>;
   }
 
   return (
-    <section id="about" className="about">
+    <section id="about" className="about scroll-animate" ref={sectionRef}>
       <div className="container">
         <h2 className="section-title">About Me</h2>
         <div className="about-content">

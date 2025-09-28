@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CertificatePopup from './CertificatePopup';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
   return (
@@ -25,6 +26,7 @@ const Certifications = ({ onViewAllClick, certifications = [] }) => {
   const [popupCert, setPopupCert] = useState({ src: null, title: null });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const sectionRef = useScrollAnimation();
 
   const handleImageClick = (src, title) => {
     setPopupCert({ src, title });
@@ -56,7 +58,7 @@ const Certifications = ({ onViewAllClick, certifications = [] }) => {
   }
 
   return (
-    <section id="certifications" className="certifications">
+    <section id="certifications" className="certifications scroll-animate" ref={sectionRef}>
       <div className="container">
         <div className="section-title-container">
           <h2 className="section-title">My Certifications</h2>

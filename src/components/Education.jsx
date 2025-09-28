@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { supabase } from '../integrations/supabase/client.js';
+import useScrollAnimation from '../hooks/useScrollAnimation.jsx';
 
 const TimelineItem = ({ icon, title, subtitle, date, description, grade }) => {
   const itemRef = useRef(null);
@@ -48,6 +49,7 @@ const TimelineItem = ({ icon, title, subtitle, date, description, grade }) => {
 
 const Education = () => {
   const [educationData, setEducationData] = useState([]);
+  const sectionRef = useScrollAnimation();
 
   useEffect(() => {
     const fetchEducation = async () => {
@@ -63,7 +65,7 @@ const Education = () => {
   }, []);
 
   return (
-    <section id="education" className="education">
+    <section id="education" className="education scroll-animate" ref={sectionRef}>
       <div className="container">
         <h2 className="section-title">My Education</h2>
         <div className="education-timeline">
