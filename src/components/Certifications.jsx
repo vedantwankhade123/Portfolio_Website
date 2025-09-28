@@ -50,6 +50,12 @@ const Certifications = () => {
       issuer: "Udemy",
       date: "In Progress",
       imageUrl: "/images/webdev.png",
+    },
+    {
+      title: "More Certifications Coming Soon",
+      issuer: "Stay Tuned",
+      date: "2025",
+      imageUrl: "/images/webdev.png",
     }
   ];
 
