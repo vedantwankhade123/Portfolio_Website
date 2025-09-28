@@ -681,7 +681,7 @@ body.dark-mode .django-icon {
     box-shadow: 0 15px 40px var(--shadow-color);
     cursor: pointer;
     background-color: var(--card-bg);
-    border: 2px solid var(--border-color);
+    border: 2px solid rgba(var(--primary-rgb), 0.3);
     transition: border-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
 }
 
