@@ -130,20 +130,29 @@ section {
 /* Header Styles */
 .top-bar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1200px;
     z-index: 1001;
-    padding: 20px 0;
-    transition: all 0.4s ease;
-}
-
-.top-bar-inner {
-    width: 100%;
+    padding: 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 var(--spacing-5);
+    transition: all 0.4s ease;
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 .logo a {
@@ -177,7 +186,7 @@ section {
 .resume-btn {
     background-color: var(--text-color);
     color: var(--background-color) !important;
-    padding: 6px 20px; /* Further reduced vertical padding */
+    padding: 6px 20px;
     font-weight: 600;
     border-radius: 50px;
 }
@@ -187,37 +196,23 @@ section {
     transform: translateY(-2px);
 }
 
-/* Floating Navigation */
-.floating-nav {
-    position: fixed;
-    top: 20px;
+/* Main Navigation */
+.main-nav {
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    transition: all 0.4s ease;
-    animation: slideUpFadeIn 0.8s ease-out forwards;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-@keyframes slideUpFadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 20px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
-}
-
-.floating-nav .nav-links {
+.nav-links {
     display: flex;
     align-items: center;
-    gap: 10px; /* Increased gap for more spacing */
-    padding: 8px;
+    gap: 10px;
+    padding: 0;
     margin: 0;
 }
 
-.floating-nav .nav-links a {
+.nav-links a {
     color: var(--text-muted);
     font-weight: 500;
     padding: 10px 20px;
@@ -225,24 +220,24 @@ section {
     transition: all var(--transition-speed) ease;
 }
 
-.floating-nav .nav-links a:hover {
+.nav-links a:hover {
     color: var(--text-color);
 }
 
-.floating-nav .nav-links a.active {
+.nav-links a.active {
     background-color: var(--background-color);
     color: var(--text-color);
     box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-body.dark-mode .floating-nav .nav-links a.active {
+body.dark-mode .nav-links a.active {
     background-color: #334155;
     color: var(--text-color);
 }
 
 .burger { display: none; }
 
-/* New Theme Toggle Button */
+/* Theme Toggle Button */
 .theme-toggle-btn {
     background-color: var(--hover-color);
     border: 1px solid var(--border-color);
@@ -588,8 +583,8 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .floating-nav {
+@media (max-width: 992px) {
+    .main-nav {
         display: none;
     }
     .header-actions {
@@ -606,7 +601,7 @@ footer {
         border: none;
         cursor: pointer;
         padding: 0;
-        z-index: 1001;
+        z-index: 1002;
     }
     .burger div {
         width: 1.8rem;
@@ -621,7 +616,7 @@ footer {
     .burger.active div:nth-child(2) { opacity: 0; transform: translateX(20px); }
     .burger.active div:last-child { transform: rotate(-45deg); }
 
-    .floating-nav.mobile-active {
+    .top-bar.menu-open .main-nav {
         display: block;
         position: fixed;
         top: 0;
@@ -630,22 +625,26 @@ footer {
         width: 70%;
         max-width: 300px;
         height: 100vh;
-        border-radius: 0;
         padding: 80px 20px;
         transform: none;
         animation: none;
+        border-radius: 0;
+        background: var(--card-bg);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
     }
 
-    .floating-nav.mobile-active .nav-links {
+    .top-bar.menu-open .nav-links {
         flex-direction: column;
         align-items: flex-start;
         gap: 25px;
     }
     
-    .floating-nav.mobile-active .nav-links a {
+    .top-bar.menu-open .nav-links a {
         font-size: 1.2rem;
     }
+}
 
+@media (max-width: 768px) {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;

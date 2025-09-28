@@ -50,30 +50,15 @@ const Header = () => {
   ];
 
   return (
-    <>
-      <header className="top-bar">
-        <div className="top-bar-inner">
-          <div className="logo">
-            <a href="#home" onClick={closeMenu}>
-              <span className="logo-text">Portfolio</span>
-              <span className="logo-dot"></span>
-            </a>
-          </div>
-          <div className="header-actions">
-            <ThemeToggle />
-            <a href="#" download className="btn resume-btn">
-              <span>Resume</span>
-            </a>
-          </div>
-          <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-            <div></div>
-            <div></div>
-            <div></div>
-          </button>
-        </div>
-      </header>
+    <header className={`top-bar glass-card ${isMenuOpen ? 'menu-open' : ''}`}>
+      <div className="logo">
+        <a href="#home" onClick={closeMenu}>
+          <span className="logo-text">Portfolio</span>
+          <span className="logo-dot"></span>
+        </a>
+      </div>
 
-      <nav className={`floating-nav glass-card ${isMenuOpen ? 'mobile-active' : ''}`}>
+      <nav className="main-nav">
         <ul className="nav-links">
           {navLinks.map(link => (
             <li key={link.id}>
@@ -88,7 +73,20 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-    </>
+
+      <div className="header-actions">
+        <ThemeToggle />
+        <a href="#" download className="btn resume-btn">
+          <span>Resume</span>
+        </a>
+      </div>
+
+      <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+    </header>
   );
 };
 
