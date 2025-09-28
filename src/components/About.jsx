@@ -6,14 +6,13 @@ const About = () => {
       <div className="container">
         <h2 className="section-title">About Me</h2>
         <div className="about-content">
-          <div className="about-image">
-            <div className="img-container">
-              <img src="/images/profile.jpg" alt="Profile Picture" />
-            </div>
-          </div>
           <div className="about-text">
-            <p>I am a passionate <strong>Full Stack Developer</strong> with a strong foundation in <strong>Python programming</strong> and <strong>Web Development</strong>. Currently a <strong>B.TEch CSE</strong> student at <strong>G.H.Raisoni University, Amravati</strong>, I've completed comprehensive courses in full-stack development and built several real-world projects.</p>
-            <p>I enjoy solving complex problems and creating clean, efficient, and user-friendly applications. My goal is to leverage technology to create meaningful solutions that make a positive impact.</p>
+            <p>
+              I'm a developer driven by a passion for building elegant and effective digital solutions. My journey into technology began with a fascination for Python, which quickly expanded into the dynamic world of full-stack web development. I thrive on the challenge of turning complex problems into clean, user-friendly applications that make a real difference.
+            </p>
+            <p>
+              As a Computer Science student at <strong>G.H.Raisoni University, Amravati</strong>, I'm constantly merging academic knowledge with hands-on project experience. My goal is to not only write code but to craft experiences that are intuitive, efficient, and impactful.
+            </p>
             <div className="about-details">
               <div className="detail-item">
                 <i className="fas fa-graduation-cap"></i>
