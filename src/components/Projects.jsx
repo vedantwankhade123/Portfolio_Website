@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { projectsData } from '../data';
 import ProjectDetailPopup from './ProjectDetailPopup';
 
 const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
@@ -27,7 +26,7 @@ const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
   );
 };
 
-const Projects = ({ onViewAllClick }) => {
+const Projects = ({ onViewAllClick, projects = [] }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -38,6 +37,16 @@ const Projects = ({ onViewAllClick }) => {
   const closePopup = () => {
     setSelectedProject(null);
   };
+
+  if (!projects.length) {
+    return (
+      <section id="projects" className="projects">
+        <div className="container">
+          <h2 className="section-title">Loading Projects...</h2>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="projects">
@@ -50,8 +59,8 @@ const Projects = ({ onViewAllClick }) => {
         </div>
         <div className="projects-carousel-wrapper">
           <div className="projects-carousel">
-            {projectsData.map((project, index) => {
-              const total = projectsData.length;
+            {projects.map((project, index) => {
+              const total = projects.length;
               let className = 'project-slide-container';
               if (index === currentIndex) {
                 className += ' current-project';
@@ -76,7 +85,7 @@ const Projects = ({ onViewAllClick }) => {
           </div>
         </div>
         <div className="project-info-tabs">
-          {projectsData.map((project, index) => (
+          {projects.map((project, index) => (
             <div 
               key={index} 
               className={`project-info-tab ${index === currentIndex ? 'active' : ''}`}
@@ -90,7 +99,7 @@ const Projects = ({ onViewAllClick }) => {
       </div>
       <ProjectDetailPopup 
         project={selectedProject} 
-        projects={projectsData}
+        projects={projects}
         onClose={closePopup}
         onSelectProject={setSelectedProject}
       />

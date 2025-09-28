@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { certificationsData } from '../data';
 import CertificatePopup from './CertificatePopup';
 
 const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
@@ -22,7 +21,7 @@ const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
   );
 };
 
-const Certifications = ({ onViewAllClick }) => {
+const Certifications = ({ onViewAllClick, certifications = [] }) => {
   const [popupCert, setPopupCert] = useState({ src: null, title: null });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -36,14 +35,25 @@ const Certifications = ({ onViewAllClick }) => {
   };
 
   useEffect(() => {
+    if (certifications.length === 0) return;
     const interval = setInterval(() => {
       if (!isPaused) {
-        setCurrentIndex(prevIndex => (prevIndex + 1) % certificationsData.length);
+        setCurrentIndex(prevIndex => (prevIndex + 1) % certifications.length);
       }
     }, 3000); // Change certificate every 3 seconds
 
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, certifications.length]);
+
+  if (!certifications.length) {
+    return (
+      <section id="certifications" className="certifications">
+        <div className="container">
+          <h2 className="section-title">Loading Certifications...</h2>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="certifications" className="certifications">
@@ -60,8 +70,8 @@ const Certifications = ({ onViewAllClick }) => {
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className="certifications-carousel">
-            {certificationsData.map((cert, index) => {
-              const totalCerts = certificationsData.length;
+            {certifications.map((cert, index) => {
+              const totalCerts = certifications.length;
               let className = 'certification-card-container';
               if (index === currentIndex) {
                 className += ' current-cert';
