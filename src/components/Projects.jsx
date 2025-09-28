@@ -79,26 +79,11 @@ const Projects = () => {
     setSelectedProject(null);
   };
 
-  const goToPrev = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? projectsData.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const isLastSlide = currentIndex === projectsData.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
   return (
     <section id="projects" className="projects">
       <div className="container">
         <h2 className="section-title">My Projects</h2>
         <div className="projects-carousel-wrapper">
-          <button onClick={goToPrev} className="carousel-arrow prev-arrow" aria-label="Previous project">
-            <i className="fas fa-chevron-left"></i>
-          </button>
           <div className="projects-carousel">
             {projectsData.map((project, index) => {
               const total = projectsData.length;
@@ -124,9 +109,6 @@ const Projects = () => {
               );
             })}
           </div>
-          <button onClick={goToNext} className="carousel-arrow next-arrow" aria-label="Next project">
-            <i className="fas fa-chevron-right"></i>
-          </button>
         </div>
         <div className="project-info-tabs">
           {projectsData.map((project, index) => (
