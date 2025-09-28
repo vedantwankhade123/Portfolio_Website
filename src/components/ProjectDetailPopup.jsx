@@ -28,11 +28,6 @@ const ProjectDetailPopup = ({ project, projects, onClose, onSelectProject }) => 
             </div>
             <h3 className="popup-title">{project.title}</h3>
             <p className="popup-description">{project.description}</p>
-            <div className="popup-action-buttons">
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fab fa-github"></i> GitHub</a>
-              <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fas fa-link"></i> Live Demo</a>
-              <a href={project.videoSrc} download={`${project.title.replace(/\s+/g, '_')}.mp4`} className="btn secondary-btn"><i className="fas fa-download"></i> Download Video</a>
-            </div>
           </div>
           <div className="popup-sidebar">
             <div className="sidebar-section">

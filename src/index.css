@@ -1246,11 +1246,6 @@ footer {
     margin-bottom: var(--spacing-5);
     line-height: 1.8;
 }
-.popup-action-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
 .popup-sidebar-actions {
     display: flex;
     flex-direction: column;
