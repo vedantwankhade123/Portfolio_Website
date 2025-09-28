@@ -36,6 +36,9 @@ const Hero = () => {
         <a href="#about"><i className="fas fa-chevron-down"></i></a>
       </div>
       <div className="hero-background">
+        <div id="stars1"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
         <div className="shape shape3"></div>
