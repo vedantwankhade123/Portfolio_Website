@@ -237,14 +237,19 @@ section {
     gap: 8px;
 }
 
-.nav-links a:hover {
+.nav-links a:not(.active):hover {
     color: var(--text-color);
+    background-color: var(--hover-color);
 }
 
 .nav-links a.active {
     background: var(--primary-gradient);
     color: white;
     box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.nav-links a.active:hover {
+    transform: scale(1.05);
 }
 
 body.dark-mode .nav-links a.active {
@@ -276,8 +281,7 @@ body.dark-mode .nav-links a.active {
 }
 
 .theme-toggle-btn:hover {
-    opacity: 0.9;
-    transform: rotate(15deg);
+    transform: rotate(15deg) scale(1.1);
 }
 
 /* Hero Section */
@@ -811,8 +815,7 @@ body.dark-mode .nav-links a.active {
     transition: all var(--transition-speed) ease; 
 }
 .social-icon:hover { 
-    opacity: 0.9;
-    transform: translateY(-5px); 
+    transform: translateY(-5px) scale(1.1); 
 }
 
 .form-group { margin-bottom: var(--spacing-5); }
@@ -861,13 +864,13 @@ footer {
     font-size: 1rem;
     text-align: center;
     color: white;
+    transform: translateY(0);
 }
 .primary-btn { 
     background: var(--primary-gradient); 
     color: white; 
 }
 .primary-btn:hover {
-    opacity: 0.9;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.25);
 }
@@ -880,6 +883,7 @@ footer {
     background: var(--primary-gradient); 
     color: white; 
     border-color: transparent;
+    transform: translateY(-3px);
 }
 
 /* Video Popup */
