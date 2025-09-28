@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const ProjectDetailPopup = ({ project, onClose }) => {
   if (!project) return null;
@@ -29,9 +29,27 @@ const ProjectDetailPopup = ({ project, onClose }) => {
 };
 
 const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isCurrent) {
+        // Attempt to play the video
+        videoRef.current.play().catch(error => {
+          // This catch block handles cases where autoplay is blocked by the browser
+          console.log("Video autoplay was prevented:", error);
+        });
+      } else {
+        // Pause the video and reset its time
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isCurrent]);
+
   return (
     <div className="project-carousel-card">
-      <video autoPlay loop muted playsInline key={project.videoSrc}>
+      <video ref={videoRef} loop muted playsInline key={project.videoSrc}>
         <source src={project.videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
