@@ -193,6 +193,11 @@ section {
     }
 }
 
+@keyframes blink-stars {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
 /* Header Styles */
 .top-bar {
     position: fixed;
@@ -347,7 +352,7 @@ body.dark-mode .nav-links a.active {
 }
 
 body.dark-mode .hero {
-    background-color: #0f172a;
+    background-color: #000000;
 }
 
 .hero-content {
@@ -528,7 +533,7 @@ body.dark-mode .hero h1 .highlight {
 }
 
 body.dark-mode .hero-background {
-    opacity: 0.6;
+    animation: blink-stars 5s linear infinite;
 }
 
 /* About Section */
