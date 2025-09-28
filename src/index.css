@@ -310,36 +310,27 @@ body.dark-mode .floating-nav .nav-links a.active {
     font-weight: 500;
 }
 
+.hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
 .highlight {
     color: var(--primary-color);
 }
-
-/* Typing Animation */
-.typing-text {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid var(--primary-color);
-    animation: typing 2s steps(18, end), blink-caret .75s step-end infinite;
-    animation-iteration-count: infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--primary-color); }
-}
-
 
 .cta-buttons {
     display: flex;
     gap: var(--spacing-5);
     justify-content: flex-start;
     margin-top: var(--spacing-8);
+}
+
+.hero-socials {
+    margin-top: var(--spacing-6);
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
 }
 
 /* About Section */
@@ -671,6 +662,9 @@ footer {
         text-align: center;
     }
     .cta-buttons {
+        justify-content: center;
+    }
+    .hero-socials {
         justify-content: center;
     }
 

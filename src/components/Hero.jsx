@@ -12,11 +12,16 @@ const Hero = () => {
           </div>
           <div className="hero-text">
             <h1 className="animate-text">Hello, I'm <span className="highlight">Vedant Wankhade</span></h1>
-            <h2 className="animate-text delay-1">Full Stack Developer</h2>
-            <p className="animate-text delay-2 typing-text">Web | Software | App</p>
+            <h2 className="animate-text delay-1">Creative Full Stack Developer</h2>
+            <p className="animate-text delay-2">I build dynamic and responsive web applications, turning ideas into elegant digital experiences.</p>
             <div className="cta-buttons animate-text delay-3">
               <a href="#projects" className="btn primary-btn">View My Work</a>
               <a href="#contact" className="btn secondary-btn">Contact Me</a>
+            </div>
+            <div className="hero-socials animate-text delay-4">
+              <a href="https://github.com/vedantwankhade123" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub Profile"><i className="fab fa-github"></i></a>
+              <a href="https://linkedin.com/in/vedant-wankhade123" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://instagram.com/_vedantkwankhade_" target="_blank" rel="noopener noreferrer" className="social-icon" title="Instagram Profile"><i className="fab fa-instagram"></i></a>
             </div>
           </div>
         </div>
