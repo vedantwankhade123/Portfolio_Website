@@ -64,14 +64,14 @@ const Hero = () => {
       </div>
       <div className="hero-background">
         <Beams
-          beamWidth={2}
+          beamWidth={8}
           beamHeight={15}
-          beamNumber={12}
+          beamNumber={6}
           lightColor={isDarkMode ? '#94a3b8' : '#475569'}
-          speed={1.5}
-          noiseIntensity={1.5}
+          speed={0.5}
+          noiseIntensity={1.0}
           scale={0.2}
-          rotation={0}
+          rotation={-30}
         />
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
