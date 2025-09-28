@@ -47,19 +47,40 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (personalInfo) {
-      document.title = `${personalInfo.name} | ${personalInfo.role || 'Portfolio'}`;
+    const updateFavicon = () => {
+      if (!personalInfo) return;
 
       const favicon = document.querySelector("link[rel='icon']");
-      
-      const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f97316;" /><stop offset="100%" style="stop-color:#ea580c;" /></linearGradient></defs><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, sans-serif" font-size="90" font-weight="700" fill="url(#logoGradient)">V</text></svg>`;
+      const isDarkMode = document.body.classList.contains('dark-mode');
 
+      const lightModeFavicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f97316;" /><stop offset="100%" style="stop-color:#ea580c;" /></linearGradient></defs><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, sans-serif" font-size="90" font-weight="700" fill="url(#logoGradient)" style="letter-spacing:-0.2em;">VV</text></svg>`;
+      const darkModeFavicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, sans-serif" font-size="90" font-weight="700" fill="white" style="letter-spacing:-0.2em;">VV</text></svg>`;
+
+      const svgIcon = isDarkMode ? darkModeFavicon : lightModeFavicon;
       const faviconUrl = `data:image/svg+xml,${encodeURIComponent(svgIcon)}`;
       
       if (favicon) {
         favicon.href = faviconUrl;
       }
+    };
+
+    if (personalInfo) {
+      document.title = `${personalInfo.name} | ${personalInfo.role || 'Portfolio'}`;
+      updateFavicon(); // Initial call
     }
+
+    // Observe body class changes to update favicon when theme changes
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.attributeName === 'class') {
+          updateFavicon();
+        }
+      });
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    return () => observer.disconnect();
   }, [personalInfo]);
 
   const handleViewAllClick = (tab) => {
