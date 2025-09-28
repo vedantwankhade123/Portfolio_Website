@@ -52,7 +52,7 @@ const Header = () => {
   return (
     <>
       <header className="top-bar">
-        <div className="container">
+        <div className="top-bar-inner">
           <div className="logo">
             <a href="#home" onClick={closeMenu}>
               <span className="logo-text">Portfolio</span>
