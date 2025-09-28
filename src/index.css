@@ -449,6 +449,10 @@ body.dark-mode .hero {
     color: #1a202c;
     font-weight: 500;
     height: 60px; /* Prevent layout shift */
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body.dark-mode .hero h2 {
@@ -466,15 +470,15 @@ body.dark-mode .hero h2 {
     font-size: clamp(1.3rem, 3.5vw, 2.2rem);
 }
 
-.typing-effect .token-keyword { color: #569cd6; }
-.typing-effect .token-variable { color: #4ec9b0; }
+.typing-effect .token-function { color: #795E26; }
+.typing-effect .token-property { color: #001080; }
 .typing-effect .token-operator { color: var(--text-muted); }
-.typing-effect .token-string { color: #ce9178; }
+.typing-effect .token-string { color: #A31515; }
 .typing-effect .token-punctuation { color: var(--text-muted); }
 
-body.dark-mode .typing-effect .token-keyword { color: #c586c0; }
-body.dark-mode .typing-effect .token-variable { color: #9cdcfe; }
-body.dark-mode .typing-effect .token-string { color: #ce9178; }
+body.dark-mode .typing-effect .token-function { color: #DCDCAA; }
+body.dark-mode .typing-effect .token-property { color: #9CDCFE; }
+body.dark-mode .typing-effect .token-string { color: #CE9178; }
 
 .highlight {
     color: var(--primary-color);

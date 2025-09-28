@@ -5,29 +5,32 @@ const Hero = () => {
   const codeLines = [
     {
       tokens: [
-        { text: 'const', className: 'keyword' },
-        { text: ' identity ', className: 'variable' },
-        { text: '= ', className: 'operator' },
-        { text: '"Full Stack Developer"', className: 'string' },
-        { text: ';', className: 'punctuation' },
+        { text: 'build', className: 'function' },
+        { text: '({ ', className: 'punctuation' },
+        { text: 'with', className: 'property' },
+        { text: ': ', className: 'operator' },
+        { text: '"React & Node.js"', className: 'string' },
+        { text: ' });', className: 'punctuation' },
       ],
     },
     {
       tokens: [
-        { text: 'const', className: 'keyword' },
-        { text: ' skill ', className: 'variable' },
-        { text: '= ', className: 'operator' },
-        { text: '"Python Programmer"', className: 'string' },
-        { text: ';', className: 'punctuation' },
+        { text: 'create', className: 'function' },
+        { text: '({ ', className: 'punctuation' },
+        { text: 'from', className: 'property' },
+        { text: ': ', className: 'operator' },
+        { text: '"Python Scripts"', className: 'string' },
+        { text: ' });', className: 'punctuation' },
       ],
     },
     {
       tokens: [
-        { text: 'const', className: 'keyword' },
-        { text: ' passion ', className: 'variable' },
-        { text: '= ', className: 'operator' },
-        { text: '"Digital Craftsman"', className: 'string' },
-        { text: ';', className: 'punctuation' },
+        { text: 'design', className: 'function' },
+        { text: '({ ', className: 'punctuation' },
+        { text: 'for', className: 'property' },
+        { text: ': ', className: 'operator' },
+        { text: '"User Experience"', className: 'string' },
+        { text: ' });', className: 'punctuation' },
       ],
     },
   ];
