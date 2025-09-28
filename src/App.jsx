@@ -13,6 +13,12 @@ import { projectsData, certificationsData } from './data';
 
 function App() {
   const [isAllContentPopupOpen, setAllContentPopupOpen] = useState(false);
+  const [initialPopupTab, setInitialPopupTab] = useState('projects');
+
+  const handleViewAllClick = (tab) => {
+    setInitialPopupTab(tab);
+    setAllContentPopupOpen(true);
+  };
 
   return (
     <>
@@ -22,8 +28,8 @@ function App() {
         <About />
         <Education />
         <Skills />
-        <Certifications />
-        <Projects onViewAllClick={() => setAllContentPopupOpen(true)} />
+        <Certifications onViewAllClick={() => handleViewAllClick('certifications')} />
+        <Projects onViewAllClick={() => handleViewAllClick('projects')} />
         <Contact />
       </main>
       <Footer />
@@ -32,6 +38,7 @@ function App() {
         onClose={() => setAllContentPopupOpen(false)}
         projects={projectsData}
         certifications={certificationsData}
+        initialTab={initialPopupTab}
       />
     </>
   );

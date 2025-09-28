@@ -22,7 +22,7 @@ const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
   );
 };
 
-const Certifications = () => {
+const Certifications = ({ onViewAllClick }) => {
   const [popupCert, setPopupCert] = useState({ src: null, title: null });
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -49,7 +49,12 @@ const Certifications = () => {
   return (
     <section id="certifications" className="certifications">
       <div className="container">
-        <h2 className="section-title">My Certifications</h2>
+        <div className="section-title-container">
+          <h2 className="section-title">My Certifications</h2>
+          <a href="#!" onClick={onViewAllClick} className="view-all-link">
+            View All <i className="fas fa-arrow-right"></i>
+          </a>
+        </div>
         <div className="certifications-carousel-wrapper">
           <button onClick={goToPrev} className="carousel-arrow prev-arrow" aria-label="Previous certificate">
             <i className="fas fa-chevron-left"></i>

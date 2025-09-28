@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CertificatePopup from './CertificatePopup';
 
-const AllContentPopup = ({ isOpen, onClose, projects, certifications }) => {
-    const [activeTab, setActiveTab] = useState('projects');
+const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab }) => {
+    const [activeTab, setActiveTab] = useState(initialTab);
     const [popupCert, setPopupCert] = useState({ src: null, title: null });
+
+    useEffect(() => {
+        if (isOpen) {
+            setActiveTab(initialTab);
+        }
+    }, [isOpen, initialTab]);
 
     if (!isOpen) return null;
 
