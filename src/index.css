@@ -448,9 +448,13 @@ body.dark-mode .nav-links a.active {
 .hero h2 {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     margin-bottom: var(--spacing-6);
-    color: var(--text-muted);
+    color: #1a202c;
     font-weight: 500;
     height: 60px; /* Prevent layout shift */
+}
+
+body.dark-mode .hero h2 {
+    color: #f1f5f9;
 }
 
 .typing-cursor {
@@ -461,6 +465,14 @@ body.dark-mode .nav-links a.active {
 
 .highlight {
     color: var(--primary-color);
+}
+
+.hero h1 .highlight {
+    color: #1a202c;
+}
+
+body.dark-mode .hero h1 .highlight {
+    color: #f1f5f9;
 }
 
 .cta-buttons {

@@ -18,7 +18,7 @@ const Hero = () => {
           <div className="hero-text">
             <h1 className="animate-text"><span className="highlight">Vedant Wankhade</span></h1>
             <h2 className="animate-text delay-1">
-              <TypingEffect words={roles} />
+              <TypingEffect words={roles} typeSpeed={70} deleteSpeed={40} />
             </h2>
             <div className="cta-buttons animate-text delay-3">
               <a href="#projects" className="btn primary-btn">View My Work</a>
