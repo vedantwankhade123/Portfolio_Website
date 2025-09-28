@@ -1,6 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
+    
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    // NOTE: You may need to create an EmailJS account and get your own Service ID and Template ID
+    emailjs.send('service_portfolio', 'template_portfolio', templateParams)
+      .then((response) => {
+         console.log('SUCCESS!', response.status, response.text);
+         setStatus('Message sent successfully!');
+         setFormData({ name: '', email: '', subject: '', message: '' });
+         setTimeout(() => setStatus(''), 3000);
+      }, (err) => {
+         console.log('FAILED...', err);
+         setStatus('Failed to send message. Please try again.');
+         setTimeout(() => setStatus(''), 3000);
+      });
+  };
+
   return (
     <section id="contact" className="contact">
       <div className="container">
@@ -35,20 +76,20 @@ const Contact = () => {
             </div>
           </div>
           <div className="contact-form">
-            <form id="contactForm">
+            <form id="contactForm" onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                <input type="text" id="name" name="name" placeholder="Your Name" required value={formData.name} onChange={handleChange} />
               </div>
               <div className="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                <input type="email" id="email" name="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} />
               </div>
               <div className="form-group">
-                <input type="text" id="subject" name="subject" placeholder="Subject" required />
+                <input type="text" id="subject" name="subject" placeholder="Subject" required value={formData.subject} onChange={handleChange} />
               </div>
               <div className="form-group">
-                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <textarea id="message" name="message" placeholder="Your Message" required value={formData.message} onChange={handleChange}></textarea>
               </div>
-              <button type="submit" className="btn primary-btn">Send Message</button>
+              <button type="submit" className="btn primary-btn">{status || 'Send Message'}</button>
             </form>
           </div>
         </div>
