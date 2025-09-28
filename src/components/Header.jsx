@@ -50,45 +50,45 @@ const Header = () => {
   ];
 
   return (
-    <header className="main-header">
-      <div className="header-content-wrapper">
-        <div className="logo">
-          <a href="#home" onClick={closeMenu}>
-            <span className="logo-text">Portfolio</span>
-            <span className="logo-dot"></span>
-          </a>
+    <>
+      <header className="top-bar">
+        <div className="container">
+          <div className="logo">
+            <a href="#home" onClick={closeMenu}>
+              <span className="logo-text">Portfolio</span>
+              <span className="logo-dot"></span>
+            </a>
+          </div>
+          <div className="header-actions">
+            <ThemeToggle />
+            <a href="#" download className="btn resume-btn">
+              <span>Resume</span>
+            </a>
+          </div>
+          <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
+            <div></div>
+            <div></div>
+            <div></div>
+          </button>
         </div>
+      </header>
 
-        <nav className={`main-nav ${isMenuOpen ? 'mobile-active' : ''}`}>
-          <ul className="nav-links">
-            {navLinks.map(link => (
-              <li key={link.id}>
-                <a 
-                  href={`#${link.id}`} 
-                  className={activeSection === link.id ? 'active' : ''} 
-                  onClick={closeMenu}
-                >
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="header-actions">
-          <ThemeToggle />
-          <a href="#" download className="btn resume-btn">
-            <span>Resume</span>
-          </a>
-        </div>
-
-        <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-          <div></div>
-          <div></div>
-          <div></div>
-        </button>
-      </div>
-    </header>
+      <nav className={`floating-nav glass-card ${isMenuOpen ? 'mobile-active' : ''}`}>
+        <ul className="nav-links">
+          {navLinks.map(link => (
+            <li key={link.id}>
+              <a 
+                href={`#${link.id}`} 
+                className={activeSection === link.id ? 'active' : ''} 
+                onClick={closeMenu}
+              >
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 
