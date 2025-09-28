@@ -1560,7 +1560,7 @@ body.dark-mode .django-icon {
     flex: 0 0 250px;
     background: var(--hover-color);
     padding: var(--spacing-5);
-    margin: 5px;
+    margin: 15px;
     border-radius: 16px;
 }
 .all-content-sidebar h2 {
