@@ -1216,14 +1216,11 @@ footer {
 }
 .popup-main-content, .popup-sidebar {
     overflow-y: auto;
-    padding-right: 10px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 .popup-main-content::-webkit-scrollbar, .popup-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-.popup-main-content::-webkit-scrollbar-thumb, .popup-sidebar::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 3px;
+    display: none;
 }
 .popup-video-container {
     width: 100%;
