@@ -1275,7 +1275,7 @@ body.dark-mode .django-icon {
 
 .footer-links a {
     color: var(--text-muted);
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -1317,6 +1317,23 @@ body.dark-mode .django-icon {
 
 .back-to-top a { 
     color: white; 
+}
+
+/* Dark Mode Footer Overrides */
+body.dark-mode .site-footer h3,
+body.dark-mode .site-footer h4,
+body.dark-mode .site-footer p {
+    color: var(--text-color);
+}
+
+body.dark-mode .footer-links a {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+body.dark-mode .footer-links a:hover {
+    opacity: 1;
+    color: var(--text-color);
 }
 
 /* Buttons */
