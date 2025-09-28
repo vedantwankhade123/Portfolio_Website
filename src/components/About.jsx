@@ -1,6 +1,6 @@
 import React from 'react';
 
-const About = () => {
+const About = ({ onResumeClick }) => {
   return (
     <section id="about" className="about">
       <div className="container">
@@ -43,7 +43,7 @@ const About = () => {
             </div>
           </div>
           <div className="about-footer">
-            <a href="#" className="btn primary-btn" download>
+            <a href="#!" onClick={onResumeClick} className="btn primary-btn">
               Download Resume <i className="fas fa-download"></i>
             </a>
           </div>

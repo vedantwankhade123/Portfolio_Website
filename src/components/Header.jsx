@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggle from './ThemeToggle';
 
-const Header = () => {
+const Header = ({ onResumeClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,7 +88,7 @@ const Header = () => {
 
         <div className="header-actions">
           <ThemeToggle />
-          <a href="#" download className="btn primary-btn">
+          <a href="#!" onClick={onResumeClick} className="btn primary-btn">
             <span>Resume</span>
           </a>
         </div>
