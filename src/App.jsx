@@ -17,30 +17,33 @@ function App() {
   const [isAllContentPopupOpen, setAllContentPopupOpen] = useState(false);
   const [initialPopupTab, setInitialPopupTab] = useState('projects');
   const [isResumePopupOpen, setResumePopupOpen] = useState(false);
+  
   const [projects, setProjects] = useState([]);
   const [certifications, setCertifications] = useState([]);
+  const [personalInfo, setPersonalInfo] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .order('display_order', { ascending: true });
+      const { data, error } = await supabase.from('projects').select('*').order('display_order', { ascending: true });
       if (error) console.error('Error fetching projects:', error);
       else setProjects(data);
     };
 
     const fetchCertifications = async () => {
-      const { data, error } = await supabase
-        .from('certifications')
-        .select('*')
-        .order('display_order', { ascending: true });
+      const { data, error } = await supabase.from('certifications').select('*').order('display_order', { ascending: true });
       if (error) console.error('Error fetching certifications:', error);
       else setCertifications(data);
     };
 
+    const fetchPersonalInfo = async () => {
+      const { data, error } = await supabase.from('personal_info').select('*').single();
+      if (error) console.error('Error fetching personal info:', error);
+      else setPersonalInfo(data);
+    };
+
     fetchProjects();
     fetchCertifications();
+    fetchPersonalInfo();
   }, []);
 
   const handleViewAllClick = (tab) => {
@@ -57,8 +60,8 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Header onResumeClick={handleResumeClick} />
       <main>
-        <Hero />
-        <About onResumeClick={handleResumeClick} />
+        <Hero personalInfo={personalInfo} />
+        <About personalInfo={personalInfo} onResumeClick={handleResumeClick} />
         <Education />
         <Skills />
         <Certifications 
@@ -71,7 +74,7 @@ function App() {
         />
         <Contact />
       </main>
-      <Footer />
+      <Footer personalInfo={personalInfo} />
       <AllContentPopup 
         isOpen={isAllContentPopupOpen}
         onClose={() => setAllContentPopupOpen(false)}
@@ -82,6 +85,7 @@ function App() {
       <ResumePopup 
         isOpen={isResumePopupOpen}
         onClose={() => setResumePopupOpen(false)}
+        personalInfo={personalInfo}
       />
     </>
   );

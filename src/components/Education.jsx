@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { supabase } from '../integrations/supabase/client.js';
 
 const TimelineItem = ({ icon, title, subtitle, date, description, grade }) => {
   const itemRef = useRef(null);
@@ -46,34 +47,29 @@ const TimelineItem = ({ icon, title, subtitle, date, description, grade }) => {
 
 
 const Education = () => {
+  const [educationData, setEducationData] = useState([]);
+
+  useEffect(() => {
+    const fetchEducation = async () => {
+      const { data, error } = await supabase
+        .from('education')
+        .select('*')
+        .order('display_order', { ascending: true });
+      if (error) console.error('Error fetching education data:', error);
+      else setEducationData(data);
+    };
+
+    fetchEducation();
+  }, []);
+
   return (
     <section id="education" className="education">
       <div className="container">
         <h2 className="section-title">My Education</h2>
         <div className="education-timeline">
-          <TimelineItem
-            icon="fa-university"
-            title="B.Tech CSE"
-            subtitle="G.H.Raisoni University, Amravati"
-            date="2023 - Present (2nd Year)"
-            description="Currently pursuing my Bachelor's degree in Computer Science with focus on web development and programming."
-          />
-          <TimelineItem
-            icon="fa-school"
-            title="Higher Secondary (12th)"
-            subtitle="P.R.Pote Patil Junior College, Amravati"
-            date="2021 - 2023"
-            description="Completed Higher Secondary with focus on Science and Mathematics (Computer Science)."
-            grade="61 %"
-          />
-          <TimelineItem
-            icon="fa-book"
-            title="Secondary School (10th)"
-            subtitle="Prabodhan Mahavidyalaya, Daryapur"
-            date="2020 - 2021"
-            description="Completed Secondary School education with distinction."
-            grade="97 %"
-          />
+          {educationData.map((item) => (
+            <TimelineItem key={item.id} {...item} />
+          ))}
         </div>
       </div>
     </section>
