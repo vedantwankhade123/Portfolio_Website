@@ -878,8 +878,6 @@ body.dark-mode .django-icon {
     max-width: 600px;
     height: 400px;
     position: relative;
-    perspective: 1500px;
-    transform-style: preserve-3d;
 }
 
 .certification-card-container {
@@ -888,7 +886,14 @@ body.dark-mode .django-icon {
     left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease, opacity 0.5s ease, z-index 0s 0.25s;
+    transition: opacity 0.8s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+.current-cert {
+    opacity: 1;
+    z-index: 10;
 }
 
 .certification-card {
@@ -910,63 +915,6 @@ body.dark-mode .django-icon {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.current-cert {
-    transform: translateZ(0);
-    opacity: 1;
-    z-index: 10;
-}
-
-.prev-cert {
-    transform: translateX(-55%) translateZ(-200px) rotateY(35deg);
-    opacity: 0.6;
-    z-index: 5;
-}
-
-.next-cert {
-    transform: translateX(55%) translateZ(-200px) rotateY(-35deg);
-    opacity: 0.6;
-    z-index: 5;
-}
-
-.hidden-cert {
-    transform: scale(0.7);
-    opacity: 0;
-    z-index: 1;
-}
-
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    z-index: 20;
-}
-
-.prev-arrow {
-    left: -100px;
-}
-
-.next-arrow {
-    right: -100px;
-}
-
-.carousel-arrow:hover {
-    background: var(--primary-gradient);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
 }
 
 .certification-overlay {
@@ -1591,13 +1539,6 @@ footer {
         flex-direction: column;
     }
 
-    .prev-arrow {
-        left: -60px;
-    }
-    .next-arrow {
-        right: -60px;
-    }
-
     .all-content-popup-content {
         flex-direction: column;
         height: 95%;
@@ -1721,18 +1662,6 @@ footer {
     .certifications-carousel {
         height: 250px;
         max-width: 400px;
-    }
-    .prev-cert {
-        transform: translateX(-45%) translateZ(-150px) rotateY(35deg);
-    }
-    .next-cert {
-        transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
-    }
-    .prev-arrow {
-        left: 10px;
-    }
-    .next-arrow {
-        right: 10px;
     }
 
     .projects-carousel {

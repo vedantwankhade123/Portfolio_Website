@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { certificationsData } from '../data';
 import CertificatePopup from './CertificatePopup';
 
@@ -25,6 +25,7 @@ const CertificationCard = ({ title, issuer, date, imageUrl, onImageClick }) => {
 const Certifications = ({ onViewAllClick }) => {
   const [popupCert, setPopupCert] = useState({ src: null, title: null });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleImageClick = (src, title) => {
     setPopupCert({ src, title });
@@ -34,17 +35,15 @@ const Certifications = ({ onViewAllClick }) => {
     setPopupCert({ src: null, title: null });
   };
 
-  const goToPrev = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? certificationsData.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % certificationsData.length);
+      }
+    }, 3000); // Change certificate every 3 seconds
 
-  const goToNext = () => {
-    const isLastSlide = currentIndex === certificationsData.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section id="certifications" className="certifications">
@@ -55,25 +54,14 @@ const Certifications = ({ onViewAllClick }) => {
             View All <i className="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div className="certifications-carousel-wrapper">
-          <button onClick={goToPrev} className="carousel-arrow prev-arrow" aria-label="Previous certificate">
-            <i className="fas fa-chevron-left"></i>
-          </button>
+        <div 
+          className="certifications-carousel-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="certifications-carousel">
             {certificationsData.map((cert, index) => {
-              const total = certificationsData.length;
-              let className = 'certification-card-container';
-
-              if (index === currentIndex) {
-                className += ' current-cert';
-              } else if (index === (currentIndex - 1 + total) % total) {
-                className += ' prev-cert';
-              } else if (index === (currentIndex + 1) % total) {
-                className += ' next-cert';
-              } else {
-                className += ' hidden-cert';
-              }
-
+              const className = `certification-card-container ${index === currentIndex ? 'current-cert' : ''}`;
               return (
                 <div className={className} key={index}>
                   <CertificationCard {...cert} onImageClick={handleImageClick} />
@@ -81,9 +69,6 @@ const Certifications = ({ onViewAllClick }) => {
               );
             })}
           </div>
-          <button onClick={goToNext} className="carousel-arrow next-arrow" aria-label="Next certificate">
-            <i className="fas fa-chevron-right"></i>
-          </button>
         </div>
       </div>
       <CertificatePopup 
