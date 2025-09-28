@@ -73,21 +73,36 @@ const Certifications = () => {
     setCurrentIndex(newIndex);
   };
 
-  const currentCert = certificationsData[currentIndex];
-
   return (
     <section id="certifications" className="certifications">
       <div className="container">
         <h2 className="section-title">My Certifications</h2>
-        <div className="certifications-carousel">
+        <div className="certifications-carousel-wrapper">
           <button onClick={goToPrev} className="carousel-arrow prev-arrow" aria-label="Previous certificate">
             <i className="fas fa-chevron-left"></i>
           </button>
-          <CertificationCard 
-            key={currentIndex} 
-            {...currentCert} 
-            onImageClick={handleImageClick} 
-          />
+          <div className="certifications-carousel">
+            {certificationsData.map((cert, index) => {
+              const total = certificationsData.length;
+              let className = 'certification-card-container';
+
+              if (index === currentIndex) {
+                className += ' current-cert';
+              } else if (index === (currentIndex - 1 + total) % total) {
+                className += ' prev-cert';
+              } else if (index === (currentIndex + 1) % total) {
+                className += ' next-cert';
+              } else {
+                className += ' hidden-cert';
+              }
+
+              return (
+                <div className={className} key={index}>
+                  <CertificationCard {...cert} onImageClick={handleImageClick} />
+                </div>
+              );
+            })}
+          </div>
           <button onClick={goToNext} className="carousel-arrow next-arrow" aria-label="Next certificate">
             <i className="fas fa-chevron-right"></i>
           </button>

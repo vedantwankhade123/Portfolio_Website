@@ -698,12 +698,74 @@ body.dark-mode .django-icon {
 .project-links { display: flex; gap: 15px; margin-top: auto; }
 
 /* Certifications Section */
-.certifications-carousel {
+.certifications-carousel-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-6);
+}
+
+.certifications-carousel {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
     position: relative;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+.certification-card-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, opacity 0.5s ease, z-index 0s 0.25s;
+}
+
+.certification-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.current-cert .certification-card:hover {
+    transform: scale(1.03);
+}
+
+.certification-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.current-cert {
+    transform: translateZ(0);
+    opacity: 1;
+    z-index: 10;
+}
+
+.prev-cert {
+    transform: translateX(-55%) translateZ(-200px) rotateY(35deg);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.next-cert {
+    transform: translateX(55%) translateZ(-200px) rotateY(-35deg);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.hidden-cert {
+    transform: scale(0.7);
+    opacity: 0;
+    z-index: 1;
 }
 
 .carousel-arrow {
@@ -719,38 +781,13 @@ body.dark-mode .django-icon {
     cursor: pointer;
     font-size: 1.5rem;
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 20;
 }
 
 .carousel-arrow:hover {
     background: var(--primary-gradient);
     color: white;
     transform: scale(1.1);
-}
-
-.certification-card {
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    aspect-ratio: 16 / 9.5;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px var(--shadow-color);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    background-color: #1a202c;
-}
-
-.certification-card:hover {
-    transform: scale(1.03);
-}
-
-.certification-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 1rem;
-    box-sizing: border-box;
 }
 
 .certification-overlay {
@@ -1179,16 +1216,19 @@ footer {
     .timeline-content { text-align: center; }
     .footer-content { flex-direction: column; gap: var(--spacing-4); }
     
+    .certifications-carousel-wrapper {
+        gap: 5px;
+    }
     .certifications-carousel {
-        flex-direction: column;
+        height: 250px;
+        max-width: 400px;
     }
-    .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+    .prev-cert {
+        transform: translateX(-45%) translateZ(-150px) rotateY(35deg);
     }
-    .prev-arrow { left: -10px; }
-    .next-arrow { right: -10px; }
+    .next-cert {
+        transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
+    }
 }
 
 @media (max-width: 480px) {
