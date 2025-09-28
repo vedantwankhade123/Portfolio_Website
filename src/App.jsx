@@ -52,23 +52,7 @@ function App() {
 
       const favicon = document.querySelector("link[rel='icon']");
       
-      // Create a circular SVG favicon using the profile image
-      const svgIcon = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-          <defs>
-            <clipPath id="circleClip">
-              <circle cx="50" cy="50" r="50" />
-            </clipPath>
-          </defs>
-          <image 
-            href="${personalInfo.profile_image_url}" 
-            x="0" 
-            y="0" 
-            width="100" 
-            height="100" 
-            clip-path="url(#circleClip)" 
-          />
-        </svg>`;
+      const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f97316;" /><stop offset="100%" style="stop-color:#ea580c;" /></linearGradient></defs><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, sans-serif" font-size="90" font-weight="700" fill="url(#logoGradient)">V</text></svg>`;
 
       const faviconUrl = `data:image/svg+xml,${encodeURIComponent(svgIcon)}`;
       
