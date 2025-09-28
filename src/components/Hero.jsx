@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TypingEffect from './TypingEffect';
-import LightRays from './LightRays';
+import GradientBlinds from './GradientBlinds';
 
 const Hero = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -63,16 +63,19 @@ const Hero = () => {
         <a href="#about"><i className="fas fa-chevron-down"></i></a>
       </div>
       <div className="hero-background">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor={isDarkMode ? '#94a3b8' : '#475569'}
-          raysSpeed={1.5}
-          lightSpread={0.7}
-          rayLength={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
+        <GradientBlinds
+          gradientColors={isDarkMode ? ['#1e293b', '#475569'] : ['#e0e7ff', '#c7d2fe']}
+          angle={0}
+          noise={0.1}
+          blindCount={16}
+          blindMinWidth={60}
+          spotlightRadius={0.6}
+          spotlightSoftness={0.8}
+          spotlightOpacity={isDarkMode ? 0.8 : 0.5}
+          mouseDampening={0.15}
+          distortAmount={0}
+          shineDirection="left"
+          mixBlendMode={isDarkMode ? 'lighten' : 'multiply'}
         />
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
