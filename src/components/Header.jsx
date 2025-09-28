@@ -68,7 +68,6 @@ const Header = ({ onResumeClick }) => {
               <span className="logo-v v-two">V</span>
               <span className="logo-v v-three">V</span>
             </div>
-            <span className="logo-dot"></span>
           </a>
         </div>
 
