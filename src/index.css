@@ -5,14 +5,14 @@ body.no-scroll {
 
 /* Dark Mode Variables */
 body.dark-mode {
-    --background-color: #0f172a; /* A deep navy blue */
-    --card-bg: rgba(30, 41, 59, 0.5); /* Semi-transparent card background */
+    --background-color: #121212; /* A true dark background */
+    --card-bg: rgba(28, 28, 28, 0.75); /* Semi-transparent dark gray card */
     --text-color: #e2e8f0; /* A light, soft gray for text */
-    --secondary-color: #94a3b8; /* A muted gray for secondary text */
-    --border-color: rgba(51, 65, 85, 0.5);
-    --shadow-color: rgba(0, 0, 0, 0.25);
-    --hover-color: #1e293b; /* A slightly lighter navy for hover states */
-    --primary-rgb: 148, 163, 184;
+    --secondary-color: #a0a0a0; /* A neutral gray for secondary text */
+    --border-color: rgba(51, 51, 51, 0.5);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --hover-color: #2a2a2a; /* A slightly lighter gray for hover states */
+    --primary-rgb: 136, 146, 176; /* Keep the accent color's RGB */
 }
 
 /* Light Mode Variables (within :root) */
@@ -260,7 +260,7 @@ section {
 }
 
 body.dark-mode .nav-links a.active {
-    background-color: #334155;
+    background-color: #333333;
     color: var(--text-color);
 }
 
