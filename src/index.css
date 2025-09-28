@@ -465,21 +465,6 @@ body.dark-mode .hero h2 {
     font-weight: 600;
 }
 
-.typing-effect {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-}
-
-.typing-effect .token-keyword { color: #569cd6; }
-.typing-effect .token-variable { color: #4ec9b0; }
-.typing-effect .token-operator { color: var(--text-muted); }
-.typing-effect .token-string { color: #ce9178; }
-.typing-effect .token-punctuation { color: var(--text-muted); }
-
-body.dark-mode .typing-effect .token-keyword { color: #c586c0; }
-body.dark-mode .typing-effect .token-variable { color: #9cdcfe; }
-body.dark-mode .typing-effect .token-string { color: #ce9178; }
-
 .highlight {
     color: var(--primary-color);
 }

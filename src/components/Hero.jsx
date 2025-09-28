@@ -25,34 +25,10 @@ const Hero = () => {
     return () => observer.disconnect();
   }, []);
 
-  const codeLines = [
-    {
-      tokens: [
-        { text: 'const', className: 'keyword' },
-        { text: ' identity ', className: 'variable' },
-        { text: '= ', className: 'operator' },
-        { text: '"Full Stack Developer"', className: 'string' },
-        { text: ';', className: 'punctuation' },
-      ],
-    },
-    {
-      tokens: [
-        { text: 'const', className: 'keyword' },
-        { text: ' skill ', className: 'variable' },
-        { text: '= ', className: 'operator' },
-        { text: '"Python Programmer"', className: 'string' },
-        { text: ';', className: 'punctuation' },
-      ],
-    },
-    {
-      tokens: [
-        { text: 'const', className: 'keyword' },
-        { text: ' passion ', className: 'variable' },
-        { text: '= ', className: 'operator' },
-        { text: '"Digital Craftsman"', className: 'string' },
-        { text: ';', className: 'punctuation' },
-      ],
-    },
+  const simpleLines = [
+    { tokens: [{ text: 'Full Stack Developer', className: 'role-text' }] },
+    { tokens: [{ text: 'Python Programmer', className: 'role-text' }] },
+    { tokens: [{ text: 'Digital Craftsman', className: 'role-text' }] },
   ];
 
   return (
@@ -69,7 +45,7 @@ const Hero = () => {
           <div className="hero-text">
             <h1 className="animate-text"><span className="highlight">Vedant Wankhade</span></h1>
             <h2 className="animate-text delay-1">
-              <TypingEffect lines={codeLines} typeSpeed={70} deleteSpeed={40} />
+              <TypingEffect lines={simpleLines} typeSpeed={100} deleteSpeed={60} delay={1500} />
             </h2>
             <div className="cta-buttons animate-text delay-3">
               <a href="#projects" className="btn primary-btn">View My Work</a>
@@ -89,7 +65,7 @@ const Hero = () => {
       <div className="hero-background">
         <LightRays
           raysOrigin="top-center"
-          raysColor={isDarkMode ? '#64748b' : '#a8b2d1'}
+          raysColor={isDarkMode ? '#94a3b8' : '#475569'}
           raysSpeed={1.5}
           lightSpread={0.7}
           rayLength={1.2}
