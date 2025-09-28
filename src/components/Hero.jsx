@@ -16,7 +16,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="hero-text">
-            <h1 className="animate-text">Hello, I'm <span className="highlight">Vedant Wankhade</span></h1>
+            <h1 className="animate-text"><span className="highlight">Vedant Wankhade</span></h1>
             <h2 className="animate-text delay-1">
               <TypingEffect words={roles} />
             </h2>
