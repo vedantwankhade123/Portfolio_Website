@@ -699,10 +699,12 @@ body.dark-mode .django-icon {
 
 /* Certifications Section */
 .certifications-carousel-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-6);
 }
 
 .certifications-carousel {
@@ -769,6 +771,9 @@ body.dark-mode .django-icon {
 }
 
 .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     color: var(--text-color);
@@ -784,10 +789,18 @@ body.dark-mode .django-icon {
     z-index: 20;
 }
 
+.prev-arrow {
+    left: -80px;
+}
+
+.next-arrow {
+    right: -80px;
+}
+
 .carousel-arrow:hover {
     background: var(--primary-gradient);
     color: white;
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .certification-overlay {
@@ -1124,6 +1137,13 @@ footer {
     .skills-content {
         flex-direction: column;
     }
+
+    .prev-arrow {
+        left: -40px;
+    }
+    .next-arrow {
+        right: -40px;
+    }
 }
 
 /* Mobile View */
@@ -1216,9 +1236,6 @@ footer {
     .timeline-content { text-align: center; }
     .footer-content { flex-direction: column; gap: var(--spacing-4); }
     
-    .certifications-carousel-wrapper {
-        gap: 5px;
-    }
     .certifications-carousel {
         height: 250px;
         max-width: 400px;
@@ -1228,6 +1245,12 @@ footer {
     }
     .next-cert {
         transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
+    }
+    .prev-arrow {
+        left: 10px;
+    }
+    .next-arrow {
+        right: 10px;
     }
 }
 
