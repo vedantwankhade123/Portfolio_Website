@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { supabase } from '../integrations/supabase/client.js';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,29 +19,33 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-    };
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
-    const promise = emailjs.send('service_portfolio', 'template_portfolio', templateParams);
+    const toastId = toast.loading('Sending your message...');
 
-    toast.promise(promise, {
-      loading: 'Sending message...',
-      success: () => {
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        return 'Message sent successfully!';
-      },
-      error: (err) => {
-        console.log('FAILED...', err);
-        return 'Failed to send message. Please try again.';
-      },
-    });
+    const { error } = await supabase
+      .from('contacts')
+      .insert([
+        { 
+          name: formData.name, 
+          email: formData.email, 
+          subject: formData.subject, 
+          message: formData.message 
+        }
+      ]);
+
+    setIsSubmitting(false);
+
+    if (error) {
+      toast.error('Sorry, something went wrong. Please try again.', { id: toastId });
+      console.error('Error saving contact form submission:', error);
+    } else {
+      toast.success('Thank you! Your message has been received.', { id: toastId });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }
   };
 
   return (
@@ -61,7 +67,9 @@ const Contact = () => {
               <div className="form-group">
                 <textarea id="message" name="message" placeholder="Your Message" required value={formData.message} onChange={handleChange}></textarea>
               </div>
-              <button type="submit" className="btn primary-btn">Send Message</button>
+              <button type="submit" className="btn primary-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </div>
         </div>
