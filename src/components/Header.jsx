@@ -24,7 +24,7 @@ const Header = () => {
     });
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -41,56 +41,54 @@ const Header = () => {
   };
 
   const navLinks = [
-    { id: 'home', icon: 'fas fa-home', text: 'Home' },
-    { id: 'about', icon: 'fas fa-user', text: 'About' },
-    { id: 'education', icon: 'fas fa-graduation-cap', text: 'Education' },
-    { id: 'skills', icon: 'fas fa-code', text: 'Skills' },
-    { id: 'projects', icon: 'fas fa-briefcase', text: 'Projects' },
-    { id: 'contact', icon: 'fas fa-envelope', text: 'Contact' },
+    { id: 'home', text: 'Home' },
+    { id: 'about', text: 'About' },
+    { id: 'education', text: 'Education' },
+    { id: 'skills', text: 'Skills' },
+    { id: 'projects', text: 'Projects' },
+    { id: 'contact', text: 'Contact' },
   ];
 
   return (
-    <>
-      <header className="top-bar">
-        <div className="container">
-          <div className="logo">
-            <a href="#home" onClick={closeMenu}>
-              <span className="logo-text">Portfolio</span>
-              <span className="logo-dot"></span>
-            </a>
-          </div>
-          <div className="nav-right-group">
-            <a href="#" download className="btn primary-btn resume-btn">
-              <i className="fas fa-download"></i>
-              <span className="resume-text">Resume</span>
-            </a>
-            <ThemeToggle />
-            <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-              <div></div>
-              <div></div>
-              <div></div>
-            </button>
-          </div>
+    <header className="main-header">
+      <div className="header-content-wrapper">
+        <div className="logo">
+          <a href="#home" onClick={closeMenu}>
+            <span className="logo-text">Portfolio</span>
+            <span className="logo-dot"></span>
+          </a>
         </div>
-      </header>
 
-      <nav className={`floating-nav glass-card ${isMenuOpen ? 'mobile-menu-active' : ''}`}>
-        <ul className="nav-links">
-          {navLinks.map(link => (
-            <li key={link.id}>
-              <a 
-                href={`#${link.id}`} 
-                className={activeSection === link.id ? 'active' : ''} 
-                onClick={closeMenu}
-              >
-                <i className={link.icon}></i>
-                <span className="link-text">{link.text}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </>
+        <nav className={`main-nav ${isMenuOpen ? 'mobile-active' : ''}`}>
+          <ul className="nav-links">
+            {navLinks.map(link => (
+              <li key={link.id}>
+                <a 
+                  href={`#${link.id}`} 
+                  className={activeSection === link.id ? 'active' : ''} 
+                  onClick={closeMenu}
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="header-actions">
+          <ThemeToggle />
+          <a href="#" download className="btn resume-btn">
+            <span>Resume</span>
+          </a>
+        </div>
+
+        <button className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+      </div>
+    </header>
   );
 };
 
