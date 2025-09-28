@@ -1,54 +1,54 @@
 import React, { useState } from 'react';
 
-const VideoPopup = ({ src, title, onClose }) => {
-  if (!src) return null;
+const ProjectDetailPopup = ({ project, onClose }) => {
+  if (!project) return null;
 
   return (
-    <div className="video-popup active" onClick={onClose}>
-      <div className="video-popup-content" onClick={(e) => e.stopPropagation()}>
+    <div className="project-popup active" onClick={onClose}>
+      <div className="project-popup-content" onClick={(e) => e.stopPropagation()}>
         <button onClick={onClose} className="close-popup">&times;</button>
-        <video src={src} controls autoPlay playsInline loop muted />
-        <h3>{title}</h3>
+        <div className="popup-grid">
+          <div className="popup-video-container">
+            <video src={project.videoSrc} controls autoPlay playsInline loop muted />
+          </div>
+          <div className="popup-info-container">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <div className="project-tech">
+              {project.tech.map(t => <span key={t}>{t}</span>)}
+            </div>
+            <div className="project-links">
+              <a href="#" className="btn secondary-btn"><i className="fas fa-link"></i> Live Demo</a>
+              <a href="#" className="btn secondary-btn"><i className="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const ProjectCard = ({ videoSrc, title, description, tech, onVideoClick }) => {
+const ProjectCarouselCard = ({ project, isCurrent, onViewClick }) => {
   return (
-    <div className="project-card glass-card">
-      <div className="video-container" onClick={() => onVideoClick(videoSrc, title)}>
-        <video autoPlay loop muted playsInline key={videoSrc}>
-          <source src={videoSrc} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div className="project-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <div className="project-tech">
-          {tech.map(t => <span key={t}>{t}</span>)}
+    <div className="project-carousel-card">
+      <video autoPlay loop muted playsInline key={project.videoSrc}>
+        <source src={project.videoSrc} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {isCurrent && (
+        <div className="project-overlay">
+          <button onClick={() => onViewClick(project)} className="btn primary-btn">
+            View Project
+          </button>
         </div>
-        <div className="project-links">
-          <a href="#" className="btn secondary-btn"><i className="fas fa-link"></i> Live Demo</a>
-          <a href="#" className="btn secondary-btn"><i className="fab fa-github"></i> GitHub</a>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
 
 const Projects = () => {
-  const [popupVideo, setPopupVideo] = useState({ src: null, title: null });
+  const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleVideoClick = (src, title) => {
-    setPopupVideo({ src, title });
-  };
-
-  const closePopup = () => {
-    setPopupVideo({ src: null, title: null });
-  };
 
   const projectsData = [
     {
@@ -71,6 +71,14 @@ const Projects = () => {
     }
   ];
 
+  const handleViewClick = (project) => {
+    setSelectedProject(project);
+  };
+
+  const closePopup = () => {
+    setSelectedProject(null);
+  };
+
   const goToPrev = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? projectsData.length - 1 : currentIndex - 1;
@@ -92,23 +100,48 @@ const Projects = () => {
             <i className="fas fa-chevron-left"></i>
           </button>
           <div className="projects-carousel">
-            <div 
-              className="projects-carousel-inner" 
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {projectsData.map((project, index) => (
-                <div className="project-slide" key={index}>
-                  <ProjectCard {...project} onVideoClick={handleVideoClick} />
+            {projectsData.map((project, index) => {
+              const total = projectsData.length;
+              let className = 'project-slide-container';
+              if (index === currentIndex) {
+                className += ' current-project';
+              } else if (index === (currentIndex - 1 + total) % total) {
+                className += ' prev-project';
+              } else if (index === (currentIndex + 1) % total) {
+                className += ' next-project';
+              } else {
+                className += ' hidden-project';
+              }
+
+              return (
+                <div className={className} key={index}>
+                  <ProjectCarouselCard 
+                    project={project} 
+                    isCurrent={index === currentIndex}
+                    onViewClick={handleViewClick} 
+                  />
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
           <button onClick={goToNext} className="carousel-arrow next-arrow" aria-label="Next project">
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>
+        <div className="project-info-tabs">
+          {projectsData.map((project, index) => (
+            <div 
+              key={index} 
+              className={`project-info-tab ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+            >
+              <span className="project-tab-number">#{String(index + 1).padStart(2, '0')}</span>
+              <span className="project-tab-title">{project.title}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <VideoPopup src={popupVideo.src} title={popupVideo.title} onClose={closePopup} />
+      <ProjectDetailPopup project={selectedProject} onClose={closePopup} />
     </section>
   );
 };
