@@ -517,27 +517,68 @@ body.dark-mode .nav-links a.active {
 }
 
 /* Skills Section */
+.skills-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    align-items: center;
+}
+
+.skill-category {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-6);
+    font-weight: 600;
+}
+
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: var(--spacing-6);
 }
 
 .skill-item {
     text-align: center;
     padding: var(--spacing-5);
-    transition: transform var(--transition-speed) ease;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border-radius: 24px !important;
 }
 
 .skill-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 35px var(--shadow-color);
 }
 
 .skill-icon {
-    font-size: 3rem;
-    color: var(--primary-color);
+    font-size: 3.5rem;
     margin-bottom: var(--spacing-4);
+    line-height: 1;
 }
+
+.skill-item h4 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Skill Icon Colors */
+.html-icon { color: #E34F26; }
+.css-icon { color: #1572B6; }
+.js-icon { color: #F7DF1E; }
+.react-icon { color: #61DAFB; }
+.python-icon { color: #3776AB; }
+.sql-icon { color: #00758F; }
+.node-icon { color: #339933; }
+.django-icon { color: #092E20; }
+
+body.dark-mode .django-icon {
+    color: #44B78B; /* Lighter green for dark mode */
+}
+
 
 /* Education Section */
 .education-timeline {
@@ -988,6 +1029,10 @@ footer {
     .contact-info {
         margin-bottom: var(--spacing-8);
     }
+    
+    .skills-content {
+        flex-direction: column;
+    }
 }
 
 /* Mobile View */
@@ -1084,4 +1129,8 @@ footer {
 @media (max-width: 480px) {
     .cta-buttons { flex-direction: column; }
     .btn { width: 100%; }
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: var(--spacing-4);
+    }
 }
