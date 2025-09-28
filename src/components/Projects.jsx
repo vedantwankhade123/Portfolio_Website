@@ -40,6 +40,7 @@ const ProjectCard = ({ videoSrc, title, description, tech, onVideoClick }) => {
 
 const Projects = () => {
   const [popupVideo, setPopupVideo] = useState({ src: null, title: null });
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleVideoClick = (src, title) => {
     setPopupVideo({ src, title });
@@ -70,14 +71,41 @@ const Projects = () => {
     }
   ];
 
+  const goToPrev = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? projectsData.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToNext = () => {
+    const isLastSlide = currentIndex === projectsData.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
   return (
     <section id="projects" className="projects">
       <div className="container">
         <h2 className="section-title">My Projects</h2>
-        <div className="projects-grid">
-          {projectsData.map((project, index) => (
-            <ProjectCard key={index} {...project} onVideoClick={handleVideoClick} />
-          ))}
+        <div className="projects-carousel-wrapper">
+          <button onClick={goToPrev} className="carousel-arrow prev-arrow" aria-label="Previous project">
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <div className="projects-carousel">
+            <div 
+              className="projects-carousel-inner" 
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {projectsData.map((project, index) => (
+                <div className="project-slide" key={index}>
+                  <ProjectCard {...project} onVideoClick={handleVideoClick} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <button onClick={goToNext} className="carousel-arrow next-arrow" aria-label="Next project">
+            <i className="fas fa-chevron-right"></i>
+          </button>
         </div>
       </div>
       <VideoPopup src={popupVideo.src} title={popupVideo.title} onClose={closePopup} />
