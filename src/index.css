@@ -193,17 +193,9 @@ section {
     }
 }
 
-@keyframes glow-stars-1 {
-    0%, 100% { transform: scale(1); opacity: 0.6; }
-    50% { transform: scale(1.05); opacity: 1; }
-}
-@keyframes glow-stars-2 {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.9; }
-}
-@keyframes glow-stars-3 {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 0.3; }
+@keyframes blink-stars {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 /* Header Styles */
@@ -527,44 +519,21 @@ body.dark-mode .hero h1 .highlight {
     height: 100%;
     z-index: 0;
     overflow: hidden;
-}
-
-#stars1, #stars2, #stars3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: repeat;
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, white, transparent),
+        radial-gradient(1px 1px at 80% 30%, white, transparent),
+        radial-gradient(1px 1px at 50% 70%, white, transparent),
+        radial-gradient(1px 1px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 30% 90%, white, transparent),
+        radial-gradient(2px 2px at 40% 50%, white, transparent),
+        radial-gradient(2px 2px at 5% 5%, white, transparent);
+    background-size: 250px 250px;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-body.dark-mode #stars1,
-body.dark-mode #stars2,
-body.dark-mode #stars3 {
-    opacity: 1;
-}
-
-#stars1 {
-    background-image: radial-gradient(1px 1px at 10% 20%, white, transparent),
-                      radial-gradient(1px 1px at 80% 30%, white, transparent);
-    background-size: 250px 250px;
-    animation: glow-stars-1 5s linear infinite;
-}
-
-#stars2 {
-    background-image: radial-gradient(1px 1px at 50% 70%, white, transparent),
-                      radial-gradient(1px 1px at 90% 60%, white, transparent);
-    background-size: 400px 400px;
-    animation: glow-stars-2 7s linear infinite;
-}
-
-#stars3 {
-    background-image: radial-gradient(2px 2px at 40% 50%, white, transparent),
-                      radial-gradient(2px 2px at 5% 5%, white, transparent);
-    background-size: 600px 600px;
-    animation: glow-stars-3 9s linear infinite;
+body.dark-mode .hero-background {
+    animation: blink-stars 5s linear infinite;
 }
 
 /* About Section */
