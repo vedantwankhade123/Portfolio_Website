@@ -11,6 +11,7 @@ export const personalInfo = {
   github_url: "https://github.com",
   linkedin_url: "https://linkedin.com",
   instagram_url: "https://instagram.com",
+  youtube_url: "https://youtube.com/@kodar-d9i?si=hoxyusoWLOTlN0-L",
   resume_png_url: "/images/Vedant Wankhade (RESUME).jpg",
 };
 

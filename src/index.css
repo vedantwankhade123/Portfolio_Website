@@ -232,6 +232,10 @@ body.dark-mode .social-icon.github-icon {
     color: #d6249f; /* Fallback */
 }
 
+.social-icon.youtube-icon {
+    color: #FF0000;
+}
+
 .social-icon.gmail-icon {
     color: #D44638;
 }
