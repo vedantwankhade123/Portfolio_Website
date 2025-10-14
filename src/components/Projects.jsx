@@ -36,12 +36,33 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [slides, setSlides] = useState([]);
 
-  // Group projects into pairs for the carousel
-  const projectPairs = [];
-  for (let i = 0; i < projects.length; i += 2) {
-    projectPairs.push(projects.slice(i, i + 2));
-  }
+  useEffect(() => {
+    if (!projects.length) return;
+
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+
+    const updateSlides = () => {
+      if (mediaQuery.matches) {
+        // Mobile: one project per slide
+        setSlides(projects.map(p => [p]));
+      } else {
+        // Desktop: group projects into pairs
+        const projectPairs = [];
+        for (let i = 0; i < projects.length; i += 2) {
+          projectPairs.push(projects.slice(i, i + 2));
+        }
+        setSlides(projectPairs);
+      }
+      setCurrentIndex(0); // Reset index on layout change
+    };
+
+    updateSlides();
+    mediaQuery.addEventListener('change', updateSlides);
+
+    return () => mediaQuery.removeEventListener('change', updateSlides);
+  }, [projects]);
 
   const handleViewClick = (project) => {
     setSelectedProject(project);
@@ -52,28 +73,30 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
   };
 
   const goToPrevious = () => {
+    if (slides.length === 0) return;
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? projectPairs.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const goToNext = () => {
-    const isLastSlide = currentIndex === projectPairs.length - 1;
+    if (slides.length === 0) return;
+    const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
 
   useEffect(() => {
-    if (projectPairs.length <= 1) return;
+    if (slides.length <= 1) return;
     
     const intervalId = setInterval(() => {
       if (!isPaused) {
-        setCurrentIndex(prevIndex => (prevIndex + 1) % projectPairs.length);
+        setCurrentIndex(prevIndex => (prevIndex + 1) % slides.length);
       }
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [isPaused, projectPairs.length]);
+  }, [isPaused, slides]);
 
   if (!projects.length) {
     return (
@@ -108,7 +131,7 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
                 className="projects-carousel-inner"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {projectPairs.map((pair, index) => (
+                {slides.map((pair, index) => (
                   <div className="project-slide" key={index}>
                     <div className="project-pair-container">
                       {pair.map((project) => (
@@ -129,7 +152,7 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
           </button>
         </div>
         <div className="project-dots">
-          {projectPairs.map((_, index) => (
+          {slides.map((_, index) => (
             <button
               key={index}
               className={`dot ${currentIndex === index ? 'active' : ''}`}
