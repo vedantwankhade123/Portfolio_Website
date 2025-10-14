@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ProjectDetailPopup from './ProjectDetailPopup';
+import toast from 'react-hot-toast';
 
 const ProjectCarouselCard = ({ project, onViewClick }) => {
+  const handleLiveDemoClick = (e, url) => {
+    if (url === "#!") {
+      e.preventDefault();
+      toast.error('Site not published yet.');
+    }
+  };
+
   return (
     <div className="project-carousel-card">
       <video autoPlay loop muted playsInline key={project.videoSrc}>
@@ -13,7 +21,7 @@ const ProjectCarouselCard = ({ project, onViewClick }) => {
           <h4 className="project-overlay-title">{project.title}</h4>
           <div className="project-overlay-links">
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repository"><i className="fab fa-github"></i></a>
-            <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" title="Live Demo"><i className="fas fa-link"></i></a>
+            <a href={project.liveDemoUrl} onClick={(e) => handleLiveDemoClick(e, project.liveDemoUrl)} target="_blank" rel="noopener noreferrer" title="Live Demo"><i className="fas fa-link"></i></a>
           </div>
         </div>
         <button onClick={() => onViewClick(project)} className="btn primary-btn">

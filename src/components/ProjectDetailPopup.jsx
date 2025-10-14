@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const ProjectDetailPopup = ({ project, projects, onClose, onSelectProject }) => {
   if (!project) return null;
@@ -13,9 +14,18 @@ const ProjectDetailPopup = ({ project, projects, onClose, onSelectProject }) => 
     'Flask': 'fas fa-server',
     'SQLite': 'fas fa-database',
     'Express': 'fas fa-server',
+    'AI/ML APIs': 'fas fa-brain',
+    'Vite': 'fas fa-bolt'
   };
 
   const otherProjects = projects.filter(p => p.title !== project.title);
+
+  const handleLiveDemoClick = (e, url) => {
+    if (url === "#!") {
+      e.preventDefault();
+      toast.error('Site not published yet.');
+    }
+  };
 
   return (
     <div className="project-popup active" onClick={onClose}>
@@ -34,7 +44,7 @@ const ProjectDetailPopup = ({ project, projects, onClose, onSelectProject }) => 
               <h4>Actions</h4>
               <div className="popup-sidebar-actions">
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fab fa-github"></i> GitHub</a>
-                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fas fa-link"></i> Live Demo</a>
+                <a href={project.liveDemoUrl} onClick={(e) => handleLiveDemoClick(e, project.liveDemoUrl)} target="_blank" rel="noopener noreferrer" className="btn secondary-btn"><i className="fas fa-link"></i> Live Demo</a>
                 <a href={project.videoSrc} download={`${project.title.replace(/\s+/g, '_')}.mp4`} className="btn secondary-btn"><i className="fas fa-download"></i> Download Video</a>
               </div>
             </div>

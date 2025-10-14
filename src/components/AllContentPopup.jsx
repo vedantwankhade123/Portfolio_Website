@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CertificatePopup from './CertificatePopup';
 import ProjectDetailPopup from './ProjectDetailPopup';
+import toast from 'react-hot-toast';
 
 const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab }) => {
     const [activeTab, setActiveTab] = useState(initialTab);
@@ -29,6 +30,14 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
 
     const closeProjectPopup = () => {
         setSelectedProject(null);
+    };
+
+    const handleLiveDemoClick = (e, url) => {
+        e.stopPropagation();
+        if (url === "#!") {
+            e.preventDefault();
+            toast.error('Site not published yet.');
+        }
     };
 
     return (
@@ -61,17 +70,17 @@ const AllContentPopup = ({ isOpen, onClose, projects, certifications, initialTab
                         {activeTab === 'projects' && (
                             <div className="content-grid projects-grid">
                                 {projects.map((project, index) => (
-                                    <div className="popup-project-card" key={index} onClick={() => handleViewProject(project)}>
-                                        <div className="popup-project-video">
+                                    <div className="popup-project-card" key={index}>
+                                        <div className="popup-project-video" onClick={() => handleViewProject(project)}>
                                             <video autoPlay loop muted playsInline>
                                                 <source src={project.videoSrc} type="video/mp4" />
                                             </video>
                                         </div>
                                         <div className="popup-project-info">
-                                            <h4>{project.title}</h4>
+                                            <h4 onClick={() => handleViewProject(project)}>{project.title}</h4>
                                             <div className="popup-project-links">
-                                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub"><i className="fab fa-github"></i></a>
-                                                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" title="Live Demo"><i className="fas fa-link"></i></a>
+                                                <a href={project.githubUrl} onClick={(e) => e.stopPropagation()} target="_blank" rel="noopener noreferrer" title="GitHub"><i className="fab fa-github"></i></a>
+                                                <a href={project.liveDemoUrl} onClick={(e) => handleLiveDemoClick(e, project.liveDemoUrl)} target="_blank" rel="noopener noreferrer" title="Live Demo"><i className="fas fa-link"></i></a>
                                             </div>
                                         </div>
                                     </div>

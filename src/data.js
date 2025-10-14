@@ -93,7 +93,7 @@ export const projects = [
     description: "An integrated AI platform featuring tools for image and video generation, sketch-to-image conversion, text-to-code, a manual canvas-based website builder, and an interactive AI chat assistant.",
     tech: ["React", "Node.js", "AI/ML APIs", "Vite"],
     githubUrl: "https://github.com",
-    liveDemoUrl: "#!",
+    liveDemoUrl: "https://manibau-studios.netlify.app/",
     display_order: 2,
   },
 ];
