@@ -1799,7 +1799,7 @@ body.dark-mode .footer-links a:hover {
     }
 }
 
-/* Tablet View - Content Stacking */
+/* Tablet View - Content Stacking & Hamburger Menu */
 @media (max-width: 992px) {
     .hero-content,
     .contact-content {
@@ -1867,10 +1867,8 @@ body.dark-mode .footer-links a:hover {
     .popup-sidebar {
         padding-top: var(--spacing-6);
     }
-}
 
-/* Mobile View */
-@media (max-width: 768px) {
+    /* Hamburger Menu Activation */
     .main-nav, .header-actions {
         display: none;
     }
@@ -1938,7 +1936,10 @@ body.dark-mode .footer-links a:hover {
     .top-bar.menu-open .nav-link-icon {
         display: none;
     }
+}
 
+/* Mobile View */
+@media (max-width: 768px) {
     .hero-image-wrapper {
         width: 250px;
         height: 250px;
