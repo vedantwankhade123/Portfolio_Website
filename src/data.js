@@ -12,7 +12,7 @@ export const personalInfo = {
   linkedin_url: "https://linkedin.com",
   instagram_url: "https://instagram.com",
   resume_pdf_url: "/VedantWankhade_Resume.pdf",
-  resume_png_url: "/images/VedantWankhade_Resume.png",
+  resume_png_url: "/images/Vedant Wankhade (RESUME).jpg",
 };
 
 export const educationData = [
