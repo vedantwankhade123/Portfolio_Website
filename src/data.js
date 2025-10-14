@@ -50,23 +50,35 @@ export const skills = [
 
 export const certifications = [
   {
-    title: "The Complete Web Development Bootcamp",
-    issuer: "Udemy",
-    date: "Issued 2023",
-    imageUrl: "/images/webdev.png",
-  },
-  {
     title: "Python for Everybody Specialization",
     issuer: "Coursera",
     date: "Issued 2022",
+    imageUrl: "/images/Python Certificate.png",
+  },
+  {
+    title: "Journey to Cloud: Envisioning Your Solution",
+    issuer: "Google Cloud",
+    date: "Issued 2023",
+    imageUrl: "/images/JTC Certificate.jpg",
+  },
+  {
+    title: "Getting Started with Artificial Intelligence",
+    issuer: "IBM",
+    date: "Issued 2023",
+    imageUrl: "/images/GSWA Certificate.jpg",
+  },
+  {
+    title: "Web Development Fundamentals",
+    issuer: "Udemy",
+    date: "Issued 2023",
     imageUrl: "/images/Udemy.png",
   },
 ];
 
 export const projects = [
   {
-    title: "CleanCity Initiative",
-    videoSrc: "/videos/Coming.mp4",
+    title: "Waste Management Platform",
+    videoSrc: "/videos/cleancity.mp4",
     description: "A full-stack web application designed to report and manage local cleanliness issues. Features user authentication, geolocation for reporting, and an admin dashboard for managing complaints. Built with React, Node.js, and Mapbox.",
     tech: ["React", "Node.js", "MongoDB", "Mapbox"],
     githubUrl: "https://github.com",
@@ -74,21 +86,12 @@ export const projects = [
     display_order: 1,
   },
   {
-    title: "AI Object Detection",
-    videoSrc: "/videos/Coming.mp4",
-    description: "A Python-based application that uses OpenCV and pre-trained models to detect objects in real-time video streams. The backend is powered by Flask to serve the video feed to a simple web interface.",
-    tech: ["Python", "OpenCV", "Flask"],
+    title: "All-in-One AI Platform",
+    videoSrc: "/videos/manibau-studios.mp4",
+    description: "An integrated AI platform featuring tools for image and video generation, sketch-to-image conversion, text-to-code, a manual canvas-based website builder, and an interactive AI chat assistant.",
+    tech: ["React", "Node.js", "AI/ML APIs", "Vite"],
     githubUrl: "https://github.com",
     liveDemoUrl: "#!",
     display_order: 2,
-  },
-  {
-    title: "Portfolio Website",
-    videoSrc: "/videos/Coming.mp4",
-    description: "My personal portfolio website (the one you're looking at!) built with React and Vite. Features a responsive design, dark mode, and interactive animations to showcase my projects and skills.",
-    tech: ["React", "Three.js", "Vite"],
-    githubUrl: "https://github.com",
-    liveDemoUrl: "#!",
-    display_order: 3,
   },
 ];
