@@ -29,6 +29,12 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Group projects into pairs for the carousel
+  const projectPairs = [];
+  for (let i = 0; i < projects.length; i += 2) {
+    projectPairs.push(projects.slice(i, i + 2));
+  }
+
   const handleViewClick = (project) => {
     setSelectedProject(project);
   };
@@ -39,27 +45,27 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? projects.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? projectPairs.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const goToNext = () => {
-    const isLastSlide = currentIndex === projects.length - 1;
+    const isLastSlide = currentIndex === projectPairs.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
 
   useEffect(() => {
-    if (projects.length <= 1) return;
+    if (projectPairs.length <= 1) return;
     
     const intervalId = setInterval(() => {
       if (!isPaused) {
-        setCurrentIndex(prevIndex => (prevIndex + 1) % projects.length);
+        setCurrentIndex(prevIndex => (prevIndex + 1) % projectPairs.length);
       }
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [isPaused, projects.length]);
+  }, [isPaused, projectPairs.length]);
 
   if (!projects.length) {
     return (
@@ -94,12 +100,17 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
                 className="projects-carousel-inner"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {projects.map((project, index) => (
+                {projectPairs.map((pair, index) => (
                   <div className="project-slide" key={index}>
-                    <ProjectCarouselCard 
-                      project={project} 
-                      onViewClick={handleViewClick} 
-                    />
+                    <div className="project-pair-container">
+                      {pair.map((project) => (
+                        <ProjectCarouselCard 
+                          key={project.title}
+                          project={project} 
+                          onViewClick={handleViewClick} 
+                        />
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -110,12 +121,12 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
           </button>
         </div>
         <div className="project-dots">
-          {projects.map((_, index) => (
+          {projectPairs.map((_, index) => (
             <button
               key={index}
               className={`dot ${currentIndex === index ? 'active' : ''}`}
               onClick={() => setCurrentIndex(index)}
-              aria-label={`Go to project ${index + 1}`}
+              aria-label={`Go to project page ${index + 1}`}
             ></button>
           ))}
         </div>

@@ -876,6 +876,12 @@ body.dark-mode .django-icon {
     position: relative;
 }
 
+.project-pair-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 .project-carousel-card {
     width: 100%;
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -1987,6 +1993,9 @@ body.dark-mode .footer-links a:hover {
         gap: var(--spacing-4);
     }
     .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-pair-container {
         grid-template-columns: 1fr;
     }
 }
