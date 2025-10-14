@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../integrations/supabase/client.js';
+import React from 'react';
+import { skills } from '../data.js';
 
 const SkillCard = ({ name, icon, colorClass }) => (
   <div className="skill-item">
@@ -11,21 +11,6 @@ const SkillCard = ({ name, icon, colorClass }) => (
 );
 
 const Skills = () => {
-  const [skills, setSkills] = useState([]);
-
-  useEffect(() => {
-    const fetchSkills = async () => {
-      const { data, error } = await supabase
-        .from('skills')
-        .select('*')
-        .order('display_order', { ascending: true });
-      if (error) console.error('Error fetching skills:', error);
-      else setSkills(data);
-    };
-
-    fetchSkills();
-  }, []);
-
   return (
     <section id="skills" className="skills">
       <div className="container">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { supabase } from '../integrations/supabase/client.js';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,26 +25,12 @@ const Contact = () => {
 
     const toastId = toast.loading('Sending your message...');
 
-    const { error } = await supabase
-      .from('contacts')
-      .insert([
-        { 
-          name: formData.name, 
-          email: formData.email, 
-          subject: formData.subject, 
-          message: formData.message 
-        }
-      ]);
-
-    setIsSubmitting(false);
-
-    if (error) {
-      toast.error('Sorry, something went wrong. Please try again.', { id: toastId });
-      console.error('Error saving contact form submission:', error);
-    } else {
+    // Simulate a network request
+    setTimeout(() => {
       toast.success('Thank you! Your message has been received.', { id: toastId });
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (

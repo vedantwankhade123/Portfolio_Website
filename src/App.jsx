@@ -11,40 +11,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AllContentPopup from './components/AllContentPopup';
 import ResumePopup from './components/ResumePopup';
-import { supabase } from './integrations/supabase/client.js';
+import { personalInfo, projects, certifications } from './data.js';
 
 function App() {
   const [isAllContentPopupOpen, setAllContentPopupOpen] = useState(false);
   const [initialPopupTab, setInitialPopupTab] = useState('projects');
   const [isResumePopupOpen, setResumePopupOpen] = useState(false);
-  
-  const [projects, setProjects] = useState([]);
-  const [certifications, setCertifications] = useState([]);
-  const [personalInfo, setPersonalInfo] = useState(null);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const { data, error } = await supabase.from('projects').select('*').order('display_order', { ascending: true });
-      if (error) console.error('Error fetching projects:', error);
-      else setProjects(data);
-    };
-
-    const fetchCertifications = async () => {
-      const { data, error } = await supabase.from('certifications').select('*').order('display_order', { ascending: true });
-      if (error) console.error('Error fetching certifications:', error);
-      else setCertifications(data);
-    };
-
-    const fetchPersonalInfo = async () => {
-      const { data, error } = await supabase.from('personal_info').select('*').single();
-      if (error) console.error('Error fetching personal info:', error);
-      else setPersonalInfo(data);
-    };
-
-    fetchProjects();
-    fetchCertifications();
-    fetchPersonalInfo();
-  }, []);
 
   useEffect(() => {
     if (personalInfo) {

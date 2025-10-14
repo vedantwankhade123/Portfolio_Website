@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { supabase } from '../integrations/supabase/client.js';
+import React, { useEffect, useRef } from 'react';
+import { educationData } from '../data.js';
 
 const TimelineItem = ({ icon, title, subtitle, date, description, grade }) => {
   const itemRef = useRef(null);
@@ -47,21 +47,6 @@ const TimelineItem = ({ icon, title, subtitle, date, description, grade }) => {
 
 
 const Education = () => {
-  const [educationData, setEducationData] = useState([]);
-
-  useEffect(() => {
-    const fetchEducation = async () => {
-      const { data, error } = await supabase
-        .from('education')
-        .select('*')
-        .order('display_order', { ascending: true });
-      if (error) console.error('Error fetching education data:', error);
-      else setEducationData(data);
-    };
-
-    fetchEducation();
-  }, []);
-
   return (
     <section id="education" className="education">
       <div className="container">
