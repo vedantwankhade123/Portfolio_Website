@@ -54,7 +54,6 @@ const Header = ({ onResumeClick }) => {
     { id: 'education', text: 'Education', icon: 'fas fa-graduation-cap' },
     { id: 'skills', text: 'Skills', icon: 'fas fa-code' },
     { id: 'projects', text: 'Projects', icon: 'fas fa-briefcase' },
-    { id: 'contact', text: 'Contact', icon: 'fas fa-envelope' },
   ];
 
   return (

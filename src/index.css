@@ -1195,37 +1195,6 @@ body.dark-mode .django-icon {
     border: none;
 }
 
-/* Contact Section */
-.contact-content {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.contact-form {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: 0.5s;
-}
-
-.form-group { margin-bottom: var(--spacing-5); }
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
-    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.2);
-}
-.form-group textarea { min-height: 150px; resize: vertical; }
-
 /* Footer */
 .site-footer {
     background-color: var(--hover-color);
@@ -1841,10 +1810,6 @@ body.dark-mode .footer-links a:hover {
     .about-image {
         margin: 0 auto var(--spacing-6) auto;
     }
-
-    .contact-info {
-        margin-bottom: var(--spacing-8);
-    }
     
     .skills-content {
         flex-direction: column;
@@ -1914,9 +1879,9 @@ body.dark-mode .footer-links a:hover {
         left: 0;
         right: 0;
         width: 100%;
-        background: var(--card-bg);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: var(--background-color);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         border: 1px solid var(--border-color);
         box-shadow: 0 10px 20px var(--shadow-color);
         border-radius: 24px;
@@ -1949,6 +1914,7 @@ body.dark-mode .footer-links a:hover {
         height: auto;
         padding: 12px 20px;
         justify-content: flex-start;
+        gap: 15px;
     }
 
     .main-nav .nav-link-text {
