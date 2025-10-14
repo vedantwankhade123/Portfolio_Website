@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ThemeToggle from './ThemeToggle';
 
 const Header = ({ onResumeClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,7 +89,6 @@ const Header = ({ onResumeClick }) => {
         </nav>
 
         <div className="header-actions">
-          <ThemeToggle />
           <a href="#!" onClick={onResumeClick} className="btn primary-btn">
             <span>Resume</span>
           </a>

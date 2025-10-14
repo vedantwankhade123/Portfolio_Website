@@ -1,27 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import FadingText from './FadingText';
 import Beams from './Beams';
 
 const Hero = ({ personalInfo }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    const isDark = document.body.classList.contains('dark-mode');
-    setIsDarkMode(isDark);
-
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        if (mutation.attributeName === 'class') {
-          const newIsDark = document.body.classList.contains('dark-mode');
-          setIsDarkMode(newIsDark);
-        }
-      });
-    });
-
-    observer.observe(document.body, { attributes: true });
-    return () => observer.disconnect();
-  }, []);
-
   const roles = personalInfo?.taglines || ['Loading...'];
 
   return (
@@ -63,7 +44,7 @@ const Hero = ({ personalInfo }) => {
           beamWidth={2}
           beamHeight={15}
           beamNumber={12}
-          lightColor={isDarkMode ? '#94a3b8' : '#475569'}
+          lightColor={'#94a3b8'}
           speed={0.5}
           noiseIntensity={1.5}
           scale={0.2}

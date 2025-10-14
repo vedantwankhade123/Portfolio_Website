@@ -846,11 +846,15 @@ body.dark-mode .django-icon {
 }
 
 /* Projects Section */
+#projects .container {
+    max-width: 1400px;
+}
+
 .projects-carousel-container {
     display: flex;
     align-items: center;
     gap: 1rem;
-    max-width: 1140px;
+    width: 100%;
     margin: 0 auto;
 }
 
