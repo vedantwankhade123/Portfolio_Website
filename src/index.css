@@ -1704,14 +1704,29 @@ body.dark-mode .footer-links a:hover {
     border-radius: 24px;
     padding: var(--spacing-4);
     text-align: center;
-    max-height: 78vh;
+    max-height: 90vh;
     display: flex;
     flex-direction: column;
 }
 
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+}
+
 .resume-popup-content h2 {
     font-size: 1.5rem;
-    margin-bottom: var(--spacing-4);
+    margin-bottom: 0;
+}
+
+.download-btn-desktop {
+    display: none;
+}
+
+.download-btn-desktop i {
+    margin-left: 8px;
 }
 
 .resume-preview {
@@ -1722,16 +1737,17 @@ body.dark-mode .footer-links a:hover {
     padding: 0.5rem;
     background: var(--hover-color);
     display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 0; /* Fix flexbox overflow */
+    overflow-y: auto;
 }
 
 .resume-preview img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: auto;
+    max-height: none;
     object-fit: contain;
     border-radius: 8px;
+    margin: 0 auto;
 }
 
 .resume-actions {
@@ -2074,6 +2090,19 @@ body.dark-mode .footer-links a:hover {
     .project-overlay .btn {
         align-self: flex-start;
     }
+
+    .resume-header {
+        justify-content: center;
+    }
+    .resume-preview {
+        align-items: center;
+        justify-content: center;
+        overflow-y: hidden;
+    }
+    .resume-preview img {
+        max-height: 100%;
+        width: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2084,5 +2113,15 @@ body.dark-mode .footer-links a:hover {
     }
     .other-project-item {
         grid-template-columns: 100px 1fr;
+    }
+}
+
+/* Desktop-specific styles for Resume Popup */
+@media (min-width: 769px) {
+    .download-btn-desktop {
+        display: inline-flex;
+    }
+    .resume-actions {
+        display: none;
     }
 }
