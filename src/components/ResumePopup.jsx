@@ -12,10 +12,7 @@ const ResumePopup = ({ isOpen, onClose, personalInfo }) => {
           <img src={personalInfo.resume_png_url} alt="Resume Preview" />
         </div>
         <div className="resume-actions">
-          <a href={personalInfo.resume_pdf_url} download="VedantWankhade_Resume.pdf" className="btn primary-btn">
-            Download as PDF <i className="fas fa-file-pdf"></i>
-          </a>
-          <a href={personalInfo.resume_png_url} download="VedantWankhade_Resume.jpg" className="btn secondary-btn">
+          <a href={personalInfo.resume_png_url} download="VedantWankhade_Resume.jpg" className="btn primary-btn">
             Download as Image <i className="fas fa-file-image"></i>
           </a>
         </div>
