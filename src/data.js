@@ -43,7 +43,6 @@ export const skills = [
     { name: 'React', icon: 'fab fa-react', colorClass: 'react-icon' },
     { name: 'Node.js', icon: 'fab fa-node-js', colorClass: 'node-icon' },
     { name: 'Python', icon: 'fab fa-python', colorClass: 'python-icon' },
-    { name: 'Django', icon: 'fab fa-django', colorClass: 'django-icon' },
     { name: 'PostgreSQL', icon: 'fas fa-database', colorClass: 'postgres-icon' },
     { name: 'Bootstrap', icon: 'fab fa-bootstrap', colorClass: 'bootstrap-icon' },
 ];
@@ -66,12 +65,6 @@ export const certifications = [
     issuer: "IBM",
     date: "Issued 2023",
     imageUrl: "/images/GSWA Certificate.jpg",
-  },
-  {
-    title: "Web Development Fundamentals",
-    issuer: "Udemy",
-    date: "Issued 2023",
-    imageUrl: "/images/Udemy.png",
   },
 ];
 
