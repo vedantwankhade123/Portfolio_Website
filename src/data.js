@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Vedant Wankhade",
-  role: "Full Stack Developer",
-  taglines: ["Full Stack Developer", "Python Programmer", "Creative Coder"],
+  role: "Full Stack Web Developer",
+  taglines: ["Full Stack Web Developer", "Python Programmer", "Student"],
   profile_image_url: "/images/vedant-profile.png",
   about_p1: "I am a passionate Full Stack Developer with a strong foundation in Python programming and Web Development. Currently a B.TEch CSE student at G.H.Raisoni University, Amravati, I've been completing comprehensive courses in full-stack development and built several real-world projects.",
   about_p2: "I enjoy solving complex problems and creating clean, efficient, and user-friendly applications. My goal is to leverage technology to create meaningful solutions that make a positive impact.",
