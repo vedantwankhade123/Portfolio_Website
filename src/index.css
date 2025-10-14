@@ -1987,11 +1987,7 @@ body.dark-mode .footer-links a:hover {
     }
 
     .carousel-arrow {
-        background: rgba(var(--primary-rgb), 0.5);
-        color: white;
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+        display: none;
     }
     .project-info-tabs {
         flex-direction: column;
@@ -2020,6 +2016,49 @@ body.dark-mode .footer-links a:hover {
         background-color: var(--hover-color);
         border: 1px solid var(--border-color);
         padding: 12px 30px;
+    }
+
+    /* Project Carousel Mobile Styles */
+    .project-carousel-card {
+        padding-top: 0;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        box-shadow: none;
+    }
+    .project-carousel-card video {
+        position: static;
+        height: auto;
+        border-radius: 24px 24px 0 0;
+    }
+    .project-overlay {
+        position: static;
+        opacity: 1;
+        background: transparent;
+        padding: var(--spacing-5);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: var(--spacing-4);
+    }
+    .project-overlay-header {
+        align-items: flex-start;
+        width: 100%;
+    }
+    .project-overlay-title {
+        color: var(--text-color);
+        max-width: 100%;
+    }
+    .project-overlay-links a {
+        color: var(--text-muted);
+        font-size: 1.2rem;
+    }
+    .project-overlay-links a:hover {
+        color: var(--primary-color);
+    }
+    .project-overlay .btn {
+        align-self: flex-start;
     }
 }
 
