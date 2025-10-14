@@ -80,7 +80,7 @@ export const projects = [
   },
   {
     title: "All-in-One AI Platform",
-    videoSrc: "/videos/manibau-studios.mp4",
+    videoSrc: "/videos/manibau-studios-demo.mp4",
     description: "An integrated AI platform featuring tools for image and video generation, sketch-to-image conversion, text-to-code, a manual canvas-based website builder, and an interactive AI chat assistant.",
     tech: ["React", "Node.js", "AI/ML APIs", "Vite"],
     githubUrl: "https://github.com",
