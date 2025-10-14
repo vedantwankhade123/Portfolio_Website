@@ -826,85 +826,45 @@ body.dark-mode .django-icon {
 }
 
 /* Projects Section */
-.projects {
-    padding-bottom: 0;
-}
-
 .projects-carousel-wrapper {
     position: relative;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .projects-carousel {
-    width: 100%;
-    height: 450px;
-    position: relative;
-    perspective: 2000px;
-    transform-style: preserve-3d;
+    overflow: hidden;
+    border-radius: 24px;
 }
 
-.project-slide-container {
+.projects-carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    position: relative;
+}
+
+.project-carousel-card {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px var(--shadow-color);
+    background-color: #000;
+}
+
+.project-carousel-card video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, z-index 0s 0.3s;
-}
-
-.project-carousel-card {
-    width: 60%;
-    height: 90%;
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px var(--shadow-color);
-    cursor: pointer;
-    background-color: var(--card-bg);
-    border: 2px solid rgba(var(--primary-rgb), 0.5);
-    transition: border-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
-}
-
-.project-carousel-card video {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-}
-
-.current-project .project-carousel-card {
-    border-color: var(--primary-color);
-    box-shadow: 0 20px 50px rgba(var(--primary-rgb), 0.3);
-}
-
-.current-project {
-    transform: translateZ(0);
-    opacity: 1;
-    z-index: 10;
-}
-
-.prev-project {
-    transform: translateX(-60%) translateZ(-300px) rotateY(45deg);
-    opacity: 0.5;
-    z-index: 5;
-}
-
-.next-project {
-    transform: translateX(60%) translateZ(-300px) rotateY(-45deg);
-    opacity: 0.5;
-    z-index: 5;
-}
-
-.hidden-project {
-    transform: scale(0.5);
-    opacity: 0;
-    z-index: 1;
 }
 
 .project-overlay {
@@ -923,12 +883,12 @@ body.dark-mode .django-icon {
     padding: var(--spacing-5);
 }
 
-.project-overlay .btn {
-    width: auto;
+.project-carousel-card:hover .project-overlay {
+    opacity: 1;
 }
 
-.current-project .project-carousel-card:hover .project-overlay {
-    opacity: 1;
+.project-overlay .btn {
+    width: auto;
 }
 
 .project-overlay-header {
@@ -961,56 +921,54 @@ body.dark-mode .django-icon {
     color: white;
 }
 
-.project-info-tabs {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-8);
-    padding-bottom: var(--spacing-12);
-}
-
-.project-info-tab {
-    text-align: center;
-    cursor: pointer;
-    padding: var(--spacing-4);
-    position: relative;
-    color: var(--text-muted);
-    transition: color var(--transition-speed) ease;
-}
-
-.project-info-tab:hover {
-    color: var(--text-color);
-}
-
-.project-info-tab .project-tab-number {
-    font-weight: 600;
-    color: var(--primary-color);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.project-info-tab .project-tab-title {
-    font-weight: 500;
-}
-
-.project-info-tab::after {
-    content: '';
+.carousel-arrow {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(var(--primary-rgb), 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background: rgba(var(--primary-rgb), 1);
+}
+
+.prev-arrow {
+    left: 15px;
+}
+
+.next-arrow {
+    right: 15px;
+}
+
+.project-dots {
+    text-align: center;
+    padding: var(--spacing-5) 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: var(--border-color);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.dot.active,
+.dot:hover {
     background-color: var(--primary-color);
-    transition: width 0.4s ease;
-}
-
-.project-info-tab.active {
-    color: var(--text-color);
-}
-
-.project-info-tab.active::after {
-    width: 100%;
 }
 
 /* Certifications Section */
@@ -1092,7 +1050,7 @@ body.dark-mode .django-icon {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%);
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0) 80%);
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
     display: flex;
@@ -1994,18 +1952,6 @@ body.dark-mode .footer-links a:hover {
         transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
     }
 
-    .projects-carousel {
-        height: 300px;
-    }
-    .project-carousel-card {
-        width: 70%;
-    }
-    .prev-project {
-        transform: translateX(-45%) translateZ(-150px) rotateY(35deg);
-    }
-    .next-project {
-        transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
-    }
     .projects-carousel-wrapper .prev-arrow {
         left: 5px;
     }

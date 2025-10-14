@@ -50,13 +50,13 @@ export const skills = [
 export const certifications = [
   {
     title: "Python for Everybody Specialization",
-    issuer: "Coursera",
+    issuer: "Udemy",
     date: "Issued 2022",
     imageUrl: "/images/Python Certificate.png",
   },
   {
     title: "Journey to Cloud: Envisioning Your Solution",
-    issuer: "Google Cloud",
+    issuer: "IBM",
     date: "Issued 2023",
     imageUrl: "/images/JTC Certificate.jpg",
   },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectDetailPopup from './ProjectDetailPopup';
 
 const ProjectCarouselCard = ({ project, onViewClick }) => {
@@ -27,6 +27,7 @@ const ProjectCarouselCard = ({ project, onViewClick }) => {
 const Projects = ({ onViewAllClick, projects = [] }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleViewClick = (project) => {
     setSelectedProject(project);
@@ -48,6 +49,18 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
     setCurrentIndex(newIndex);
   };
 
+  useEffect(() => {
+    if (projects.length <= 1) return;
+    
+    const intervalId = setInterval(() => {
+      if (!isPaused) {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % projects.length);
+      }
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(intervalId);
+  }, [isPaused, projects.length]);
+
   if (!projects.length) {
     return (
       <section id="projects" className="projects">
@@ -67,7 +80,11 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
             View All <i className="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div className="projects-carousel-wrapper">
+        <div 
+          className="projects-carousel-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <button onClick={goToPrevious} className="carousel-arrow prev-arrow" aria-label="Previous project">
             <i className="fas fa-chevron-left"></i>
           </button>
