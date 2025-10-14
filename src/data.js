@@ -71,7 +71,7 @@ export const certifications = [
 export const projects = [
   {
     title: "Waste Management Platform",
-    videoSrc: "/videos/cleancity.mp4",
+    videoSrc: "/videos/Cleancity.mp4",
     description: "A full-stack web application designed to report and manage local cleanliness issues. Features user authentication, geolocation for reporting, and an admin dashboard for managing complaints. Built with React, Node.js, and Mapbox.",
     tech: ["React", "Node.js", "MongoDB", "Mapbox"],
     githubUrl: "https://github.com",

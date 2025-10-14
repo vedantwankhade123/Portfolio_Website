@@ -80,27 +80,29 @@ const Projects = ({ onViewAllClick, projects = [] }) => {
             View All <i className="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div 
-          className="projects-carousel-wrapper"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="projects-carousel-container">
           <button onClick={goToPrevious} className="carousel-arrow prev-arrow" aria-label="Previous project">
             <i className="fas fa-chevron-left"></i>
           </button>
-          <div className="projects-carousel">
-            <div 
-              className="projects-carousel-inner"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {projects.map((project, index) => (
-                <div className="project-slide" key={index}>
-                  <ProjectCarouselCard 
-                    project={project} 
-                    onViewClick={handleViewClick} 
-                  />
-                </div>
-              ))}
+          <div 
+            className="projects-carousel-wrapper"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="projects-carousel">
+              <div 
+                className="projects-carousel-inner"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              >
+                {projects.map((project, index) => (
+                  <div className="project-slide" key={index}>
+                    <ProjectCarouselCard 
+                      project={project} 
+                      onViewClick={handleViewClick} 
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <button onClick={goToNext} className="carousel-arrow next-arrow" aria-label="Next project">
