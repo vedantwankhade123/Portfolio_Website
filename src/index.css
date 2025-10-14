@@ -2004,6 +2004,24 @@ body.dark-mode .footer-links a:hover {
         transform: translateX(45%) translateZ(-150px) rotateY(-35deg);
     }
 
+    /* Certification Card Mobile Styles */
+    .certification-content {
+        padding: var(--spacing-4);
+    }
+    .certification-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    .certification-meta {
+        font-size: 0.85rem;
+        margin-bottom: var(--spacing-4);
+        gap: 5px;
+    }
+    .certification-content .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
     .projects-carousel-container {
         gap: 0.5rem;
     }
